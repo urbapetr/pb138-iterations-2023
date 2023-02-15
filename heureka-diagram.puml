@@ -1,0 +1,29 @@
+@startuml heureka-diagram
+
+hide circle
+
+skinparam Linetype ortho
+
+entity Product {
+    *id: <<uuid>>
+}
+
+entity Store {
+    *id: <<uuid>>
+}
+entity Price {
+    *id: <<uuid>>
+}
+
+entity Category {
+    *id: <<uuid>>
+}
+
+entity Photo {
+    *id: <<uuid>>
+}
+
+Product ||..|{ Photo
+Product ||..o{ Price
+
+@enduml
