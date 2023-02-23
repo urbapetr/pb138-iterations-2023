@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="heureka" type="heurekaType">   
+    </xs:element>
+    
+    <xs:complexType name="heurekaType">
+        <xs:sequence>
+            <xs:element name="storeProduct" type="storeProductType" maxOccurs="unbounded"></xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="storeProductType">
+        <xs:sequence>
+            <xs:element name="review" type="reviewType" maxOccurs="unbounded"></xs:element>
+            <xs:element name="store" type="storeType" maxOccurs="unbounded"></xs:element>
+            <xs:element name="product" type="productType" maxOccurs="unbounded"></xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="reviewType">
+        <xs:sequence>
+            <xs:element name="postedAt" type="xs:dateTime"></xs:element>
+            <xs:element name="comment" type="xs:string"></xs:element>
+            <xs:element name="customer" type="customerType"></xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="customerType">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string"></xs:element>
+            <xs:element name="email" type="xs:string"></xs:element>
+            <xs:element name="verified" type="xs:bool"></xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="storeType">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string"></xs:element>
+            <xs:element name="location" type="xs:string"></xs:element>
+            <xs:element name="link" type="xs:string"></xs:element>
+            <xs:element name="logo" type="xs:string"></xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="productType">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string"></xs:element>
+            <xs:element name="description" type="xs:string"></xs:element>
+            <xs:element name="productPhoto" type="productPhotoType"></xs:element>
+            <xs:element name="categoryProduct" type="categoryProductType"></xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="productPhotoType">
+        <xs:sequence>
+            <xs:element name="source" type="xs:string"></xs:element>
+            <xs:element name="showcase" type="xs:bool"></xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="categoryProductType">
+        <xs:sequence>
+            <xs:element name="category" type="categoryType"></xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="categoryType">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string"></xs:element>
+            <xs:element name="picture" type="xs:string"></xs:element>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

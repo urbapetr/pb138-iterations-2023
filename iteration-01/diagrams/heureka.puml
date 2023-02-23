@@ -1,0 +1,88 @@
+@startuml heureka-diagram
+
+hide circle
+
+skinparam Linetype ortho
+
+entity Product {
+    *id: <<uuid>>
+    ---
+    *name: string
+    *description: string
+}
+
+entity ProductPrice {
+    *id: <<uuid>>
+    ---
+    *store_product_id: <<StoreProduct FK>>
+    *valide_from: datetime
+    valid_to: datetime
+    *price: decimal
+    *currency: string
+}
+
+entity ProductPhoto {
+    *id: <<uuid>>
+    ---
+    *product_id: <<Product FK>>
+    *source: string
+    *showcase: bool
+}
+
+entity Store {
+    *id: <<uuid>>
+    ---
+    *name: string
+    *location: string
+    *link: string
+    logo: <<url>>
+}
+
+entity StoreProduct {
+    *id: <<uuid>>
+    ---
+    *product_id: <<Product FK>>
+    *store_id: <<Store FK>>
+}
+
+entity Category {
+    *id: <<uuid>>
+    ---
+    *name: string
+    *picture: <<url>>
+}
+
+entity CategoryProduct {
+    *id: <<uuid>>
+    ---
+    *category_id: <<Category FK>>
+    *product_id: <<Product FK>>
+}
+
+entity Customer {
+    *id: <<uuid>>
+    ---
+    *name: string
+    *email: string
+    *verified: bool
+}
+
+entity Review {
+    *id: <<uuid>>
+    ---
+    *customer_id: <<Customer FK>>
+    *store_product_id: <<StoreProduct FK>>
+    *posted_at: datetime
+    *comment: string
+}
+
+Category ||..o{ CategoryProduct
+Product ||..|{ CategoryProduct
+Product ||..o{ ProductPhoto
+Product ||..o{ StoreProduct
+Store ||..o{ StoreProduct
+StoreProduct ||..|{ ProductPrice
+Customer ||..o{ Review
+StoreProduct ||..o{ Review
+
+@enduml
