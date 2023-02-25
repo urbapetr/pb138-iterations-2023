@@ -15,8 +15,6 @@ entity ProductPrice {
     *id: <<uuid>>
     ---
     *store_product_id: <<StoreProduct FK>>
-    *valide_from: datetime
-    valid_to: datetime
     *price: decimal
     *currency: string
 }

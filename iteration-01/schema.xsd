@@ -11,9 +11,16 @@
 
     <xs:complexType name="storeProductType">
         <xs:sequence>
-            <xs:element name="review" type="reviewType" maxOccurs="unbounded"></xs:element>
+            <xs:element name="reviewList" type="reviewListType"></xs:element>
             <xs:element name="store" type="storeType" maxOccurs="unbounded"></xs:element>
             <xs:element name="product" type="productType" maxOccurs="unbounded"></xs:element>
+            <xs:element name="productPrice" type="productPriceType" maxOccurs="unbounded"></xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="reviewListType">
+        <xs:sequence>
+            <xs:element name="review" type="reviewType" minOccurs="0" maxOccurs="unbounded"></xs:element>
         </xs:sequence>
     </xs:complexType>
 
@@ -27,34 +34,34 @@
 
     <xs:complexType name="customerType">
         <xs:sequence>
-            <xs:element name="name" type="xs:string"></xs:element>
             <xs:element name="email" type="xs:string"></xs:element>
-            <xs:element name="verified" type="xs:bool"></xs:element>
         </xs:sequence>
+        <xs:attribute name="name" type="xs:string" use="required" />
+        <xs:attribute name="verified" type="xs:boolean" default="false"/>
     </xs:complexType>
 
     <xs:complexType name="storeType">
         <xs:sequence>
-            <xs:element name="name" type="xs:string"></xs:element>
             <xs:element name="location" type="xs:string"></xs:element>
             <xs:element name="link" type="xs:string"></xs:element>
             <xs:element name="logo" type="xs:string"></xs:element>
         </xs:sequence>
+        <xs:attribute name="name" type="xs:string" use="required" />
     </xs:complexType>
 
     <xs:complexType name="productType">
         <xs:sequence>
-            <xs:element name="name" type="xs:string"></xs:element>
             <xs:element name="description" type="xs:string"></xs:element>
             <xs:element name="productPhoto" type="productPhotoType"></xs:element>
             <xs:element name="categoryProduct" type="categoryProductType"></xs:element>
         </xs:sequence>
+        <xs:attribute name="name" type="xs:string" use="required" />
     </xs:complexType>
 
     <xs:complexType name="productPhotoType">
         <xs:sequence>
             <xs:element name="source" type="xs:string"></xs:element>
-            <xs:element name="showcase" type="xs:bool"></xs:element>
+            <xs:element name="showcase" type="xs:boolean"></xs:element>
         </xs:sequence>
     </xs:complexType>
 
@@ -66,8 +73,13 @@
 
     <xs:complexType name="categoryType">
         <xs:sequence>
-            <xs:element name="name" type="xs:string"></xs:element>
             <xs:element name="picture" type="xs:string"></xs:element>
         </xs:sequence>
+        <xs:attribute name="name" type="xs:string" use="required" />
+    </xs:complexType>
+
+    <xs:complexType name="productPriceType">
+        <xs:attribute name="price" type="xs:decimal"/>
+        <xs:attribute name="currency" type="xs:string"/>
     </xs:complexType>
 </xs:schema>

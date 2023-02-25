@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="schema.xsd"?>
+<heureka>
+    <storeProduct>
+        <reviewList>
+            <review>
+                <postedAt>2023-02-23T14:18:11</postedAt>
+                <comment>Using everyday, best product 10/10</comment>
+                <customer name="Lover" verified="true">
+                    <email>lover@gmail.com</email>
+                </customer>
+            </review>
+            <review>
+                <postedAt>2023-02-25T12:45:17</postedAt>
+                <comment>I dont understand, why would someone buy this.</comment>
+                <customer name="Hater">
+                    <email>hater@gmail.com</email>
+                </customer>
+            </review>
+        </reviewList>
+        <store name="CZC.CZ">
+            <location>Czech Republic</location>
+            <link>https://www.czc.cz/playstation-5-god-of-war-ragnarok/358552/produkt?utm_source=heureka.cz&amp;utm_medium=cpc&amp;utm_campaign=SEG02_CAT01_Gaming&amp;utm_content=GAM-Herni-konzole&amp;utm_id=heureka.cz_SEG02_CAT01_Gaming</link>
+            <logo>https://www.czc.cz/</logo>
+        </store>
+        <product name="PlayStation 5">
+            <description>New video game console developed by Sony Interactive Entertainment.</description>
+            <productPhoto>
+                <source>https://herni-konzole.heureka.cz/playstation-5/#prehled/</source>
+                <showcase>true</showcase>
+            </productPhoto>
+            <categoryProduct>
+                <category name="Game console">
+                    <picture>https://www.playstation.com/cs-cz/ps5/</picture>
+                </category>
+            </categoryProduct>
+        </product>
+        <productPrice price="15490" currency="KČ"/>
+    </storeProduct>
+
+    <storeProduct>
+        <reviewList></reviewList>
+        <store name="tsbohemia.cz">
+            <location>Czech Republic</location>
+            <link>https://www.tsbohemia.cz/microsoft-xbox-series-x-rrt-00010-_d362006.html?utm_source=heureka&amp;utm_medium=srovnavac&amp;utm_campaign=Elektronika+%7C+Pocitace+a+kancelar+%7C+Herni+zarizeni+%7C+Herni+konzole&amp;utm_term=362006</link>
+            <logo>https://www.tsbohemia.cz/</logo>
+        </store>
+        <product name="Microsoft Xbox Series X">
+            <description>The Xbox Series X is video game console developed by Microsoft.</description>
+            <productPhoto>
+                <source>https://herni-konzole.heureka.cz/microsoft-xbox-series-x/#prehled/</source>
+                <showcase>true</showcase>
+            </productPhoto>
+            <categoryProduct>
+                <category name="Game console">
+                    <picture>https://www.playstation.com/cs-cz/ps5/</picture>
+                </category>
+            </categoryProduct>
+        </product>
+        <productPrice price="13490" currency="KČ"/>
+    </storeProduct>
+</heureka>
