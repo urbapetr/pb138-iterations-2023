@@ -3,46 +3,84 @@
     <xsl:output method="text" />
 
     <xsl:template match="group">
-            <id>
-                <xsl:value-of select="@id" />
-            </id>
-            <groupname>
-                <xsl:value-of select="groupname" />
-            </groupname>
-            <description>
-                <xsl:value-of select="description" />
-            </description>
-        <members>
+        <xsl:text>{</xsl:text>
+        
+            <xsl:text>"id": </xsl:text>
+            <xsl:value-of select="@id" />
+            <xsl:text>,</xsl:text>
+            
+            <xsl:text>"groupname": "</xsl:text>
+            <xsl:value-of select="groupname" />
+            <xsl:text>",</xsl:text>
+            
+            <xsl:text>"description": "</xsl:text>
+            <xsl:value-of select="description" />
+            <xsl:text>",</xsl:text>
+            
+            <xsl:text>"members": [</xsl:text>
             <xsl:apply-templates select="members/member" />
-        </members>
-
-        <posts>
+            <xsl:text>],</xsl:text>
+            
+            <xsl:text>"posts": [</xsl:text>
             <xsl:apply-templates select="posts/post" />
-        </posts>
+            <xsl:text>]</xsl:text>
+            
+        <xsl:text>}</xsl:text>
+        <xsl:if test="position() != last()">
+            <xsl:text>,</xsl:text>
+        </xsl:if>
     </xsl:template>
 
     <xsl:template match="member">
-        <id>
+        <xsl:text>{</xsl:text>
+        
+            <xsl:text>"id": "</xsl:text>
             <xsl:value-of select="@id" />
-        </id>
-        <username>
+            <xsl:text>",</xsl:text>
+            
+            <xsl:text>"username": "</xsl:text>
             <xsl:value-of select="@username" />
-        </username>
+            <xsl:text>"</xsl:text>
+            
+        <xsl:text>}</xsl:text>
+        <xsl:if test="position() != last()">
+            <xsl:text>,</xsl:text>
+        </xsl:if>
     </xsl:template>
 
     <xsl:template match="post">
-        <id>
+        <xsl:text>{</xsl:text>
+        
+            <xsl:text>"id": "</xsl:text>
             <xsl:value-of select="@id" />
-        </id>
-        <sent>
+            <xsl:text>",</xsl:text>
+            
+            <xsl:text>"sent": "</xsl:text>
             <xsl:value-of select="@sent" />
-        </sent>
-        <reply_to>
-            <xsl:value-of select="@reply_to" />
-        </reply_to>
-        <post>
-            <xsl:value-of select="content" />
-        </post>
+            <xsl:text>",</xsl:text>
+            
+            <xsl:variable name="reply_to" select="@reply_to"/>
+            <xsl:text>"reply_to": </xsl:text>
+            <xsl:choose>
+                <xsl:when test="$reply_to != ''">
+                    <xsl:text>"</xsl:text>
+                    <xsl:value-of select="@reply_to" />
+                    <xsl:text>"</xsl:text>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:text>null</xsl:text>
+                </xsl:otherwise>
+            </xsl:choose>
+            <xsl:text>,</xsl:text>
+            
+            <xsl:text>"post": "</xsl:text>
+            <xsl:value-of select="normalize-space(text())" />
+            <xsl:text>"</xsl:text>
+            
+        <xsl:text>}</xsl:text>
+        <xsl:if test="position() != last()">
+            <xsl:text>,</xsl:text>
+        </xsl:if>
     </xsl:template>
 
 </xsl:stylesheet>

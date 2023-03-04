@@ -4,24 +4,36 @@
     <xsl:include href="message.xsl" />
 
     <xsl:template match="user">
-            <id>
-                <xsl:value-of select="@id" />
-            </id>
-            <username>
-                <xsl:value-of select="username" />
-            </username>
-            <handle>
-                <xsl:value-of select="handle" />
-            </handle>
-            <email>
-                <xsl:value-of select="email" />
-            </email>
-            <password>
-                <xsl:value-of select="password" />
-            </password>
-        <messages>
+    <xsl:text>{</xsl:text>
+    
+            <xsl:text>"id": </xsl:text>
+            <xsl:value-of select="@id" />
+            <xsl:text>,</xsl:text>
+            
+            <xsl:text>"username": "</xsl:text>
+            <xsl:value-of select="username" />
+            <xsl:text>",</xsl:text>
+            
+            <xsl:text>"handle": "</xsl:text>
+            <xsl:value-of select="handle" />
+            <xsl:text>",</xsl:text>
+            
+            <xsl:text>"email": "</xsl:text>
+            <xsl:value-of select="email" />
+            <xsl:text>",</xsl:text>
+            
+            <xsl:text>"password": "</xsl:text>
+            <xsl:value-of select="password" />
+            <xsl:text>",</xsl:text>
+            
+            <xsl:text>"messages": [</xsl:text>
             <xsl:apply-templates select="messages/message" />
-        </messages>
+            <xsl:text>]</xsl:text>
+            
+        <xsl:text>}</xsl:text>
+        <xsl:if test="position() != last()">
+            <xsl:text>,</xsl:text>
+        </xsl:if>
     </xsl:template>
 
 </xsl:stylesheet>
