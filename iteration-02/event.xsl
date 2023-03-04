@@ -24,7 +24,7 @@
             <xsl:value-of select="description" />
             <xsl:text>",</xsl:text>
             
-            <xsl:text>"atendees": [</xsl:text>
+            <xsl:text>"attendees": [</xsl:text>
             <xsl:apply-templates select="attendees/attendee" />
             <xsl:text>]</xsl:text>
             

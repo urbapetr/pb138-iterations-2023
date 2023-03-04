@@ -34,7 +34,7 @@
             <xsl:variable name="edited" select="@edited"/>
             <xsl:text>"edited": </xsl:text>
             <xsl:choose>
-                <xsl:when test="$edited">
+                <xsl:when test="$edited > 0">
                     <xsl:text>true</xsl:text>
                 </xsl:when>
                 <xsl:otherwise>
