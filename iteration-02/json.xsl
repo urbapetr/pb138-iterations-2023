@@ -1,27 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
-    <xsl:output method="html" />
+    <xsl:output method="text" />
     <xsl:include href="user.xsl" />
     <xsl:include href="group.xsl" />
     <xsl:include href="event.xsl" />
 
-    <xsl:template match="social">
-        <xsl:text disable-output-escaping='yes'>&lt;!DOCTYPE html&gt;</xsl:text>
-        <html>
-            <head>
-                <title>Iteration 02</title>
-            </head>
-
-            <body>
-                <h1>Users:</h1>
-                <xsl:apply-templates select="social/users/user" />
-
-                <h1>Groups:</h1>
-                <xsl:apply-templates select="social/groups/group" />
-
-                <h1>Events:</h1>
+    <xsl:template match="/">
+        <users>
+            <xsl:apply-templates select="social/users/user" />
+        </users>
+        <groups>
+            <xsl:apply-templates select="social/groups/group" />
+        </groups>
+        <events>
                 <xsl:apply-templates select="social/events/event" />
-            </body>
-        </html>
+        </events>
     </xsl:template>
 </xsl:stylesheet>

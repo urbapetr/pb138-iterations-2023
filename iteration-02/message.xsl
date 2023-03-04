@@ -1,29 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
-    <xsl:output method="html" />
+    <xsl:output method="text" />
 
     <xsl:template match="message">
-        <div>
-            <span>
+            <id>
                 <xsl:value-of select="@id" />
-            </span>
-            <span>
+            </id>
+            <thread_id>
                 <xsl:value-of select="@thread_id" />
-            </span>
-            <span>
+            </thread_id>
+            <sent>
                 <xsl:value-of select="@sent" />
-            </span>
-
-            <p>
-                <xsl:value-of select="content" />
-                <xsl:if test="@edited='true'">
-                    <small>edited</small>
-                </xsl:if>
-            </p>
-            <span>
+            </sent>
+            <reply_to>
                 <xsl:value-of select="@reply_to" />
-            </span>
-        </div>
+            </reply_to>
+
+            <edited>
+                <xsl:value-of select="@edited" />
+            </edited>
+            <message>
+                <xsl:value-of select="content" />
+            </message>
     </xsl:template>
 
 </xsl:stylesheet>

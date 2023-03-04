@@ -1,52 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
-    <xsl:output method="html" />
+    <xsl:output method="text" />
 
     <xsl:template match="group">
-        <div>
-            <h4>
-                <xsl:value-of select="groupname" />
-            </h4>
-            <span>
+            <id>
                 <xsl:value-of select="@id" />
-            </span>
-            <span>
+            </id>
+            <groupname>
+                <xsl:value-of select="groupname" />
+            </groupname>
+            <description>
                 <xsl:value-of select="description" />
-            </span>
-        </div>
-        <div>
-            <h3>Members:</h3>
+            </description>
+        <members>
             <xsl:apply-templates select="members/member" />
-        </div>
+        </members>
 
-        <div>
-            <h3>Posts:</h3>
+        <posts>
             <xsl:apply-templates select="posts/post" />
-        </div>
+        </posts>
     </xsl:template>
 
     <xsl:template match="member">
-        <h5>
-            <xsl:value-of select="@username" />
-        </h5>
-        <span>
+        <id>
             <xsl:value-of select="@id" />
-        </span>
+        </id>
+        <username>
+            <xsl:value-of select="@username" />
+        </username>
     </xsl:template>
 
     <xsl:template match="post">
-        <span>
+        <id>
             <xsl:value-of select="@id" />
-        </span>
-        <span>
+        </id>
+        <sent>
             <xsl:value-of select="@sent" />
-        </span>
-        <span>
+        </sent>
+        <reply_to>
             <xsl:value-of select="@reply_to" />
-        </span>
-        <p>
+        </reply_to>
+        <post>
             <xsl:value-of select="content" />
-        </p>
+        </post>
     </xsl:template>
 
 </xsl:stylesheet>
