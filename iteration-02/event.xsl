@@ -37,9 +37,9 @@
     <xsl:template match="attendee">
         <xsl:text>{</xsl:text>
         
-            <xsl:text>"id": "</xsl:text>
+            <xsl:text>"id": </xsl:text>
             <xsl:value-of select="@id" />
-            <xsl:text>",</xsl:text>
+            <xsl:text>,</xsl:text>
             
             <xsl:text>"username": "</xsl:text>
             <xsl:value-of select="@username" />

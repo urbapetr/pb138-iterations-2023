@@ -32,7 +32,7 @@
             <xsl:text>,</xsl:text>
 
             <xsl:variable name="edited" select="@edited"/>
-            <xsl:text>"edited": "</xsl:text>
+            <xsl:text>"edited": </xsl:text>
             <xsl:choose>
                 <xsl:when test="$edited">
                     <xsl:text>true</xsl:text>
@@ -41,7 +41,7 @@
                     <xsl:text>false</xsl:text>
                 </xsl:otherwise>
             </xsl:choose>
-            <xsl:text>",</xsl:text>
+            <xsl:text>,</xsl:text>
             
             <xsl:text>"message": "</xsl:text>
             <xsl:value-of select="normalize-space(text())" />
