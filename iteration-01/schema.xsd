@@ -1,24 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
-    <xs:element name="heureka" type="heurekaType">   
-    </xs:element>
-    
-    <xs:complexType name="heurekaType">
+    <xs:element name="products" type="productsType"/>   
+
+    <xs:complexType name="productsType">
         <xs:sequence>
-            <xs:element name="storeProduct" type="storeProductType" maxOccurs="unbounded"></xs:element>
+            <xs:element name="product" type="productType" maxOccurs="unbounded"></xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="productType">
+        <xs:sequence>
+            <xs:element name="description" type="xs:string"></xs:element>
+            <xs:element name="productPhotos" type="productPhotosType"></xs:element>
+            <xs:element name="categoryProduct" type="categoryProductType"></xs:element>
+            <xs:element name="storeProducts" type="storeProductsType"></xs:element>
+        </xs:sequence>
+        <xs:attribute name="name" type="xs:string" use="required" />
+    </xs:complexType>
+
+    <xs:complexType name="storeProductsType">
+        <xs:sequence>
+            <xs:element name="storeProduct" type="storeProductType" minOccurs="0" maxOccurs="unbounded"></xs:element>
         </xs:sequence>
     </xs:complexType>
 
     <xs:complexType name="storeProductType">
         <xs:sequence>
-            <xs:element name="reviewList" type="reviewListType"></xs:element>
+            <xs:element name="reviews" type="reviewsType"></xs:element>
             <xs:element name="store" type="storeType" maxOccurs="unbounded"></xs:element>
-            <xs:element name="product" type="productType" maxOccurs="unbounded"></xs:element>
             <xs:element name="productPrice" type="productPriceType" maxOccurs="unbounded"></xs:element>
         </xs:sequence>
     </xs:complexType>
 
-    <xs:complexType name="reviewListType">
+    <xs:complexType name="reviewsType">
         <xs:sequence>
             <xs:element name="review" type="reviewType" minOccurs="0" maxOccurs="unbounded"></xs:element>
         </xs:sequence>
@@ -49,13 +63,10 @@
         <xs:attribute name="name" type="xs:string" use="required" />
     </xs:complexType>
 
-    <xs:complexType name="productType">
+    <xs:complexType name="productPhotosType">
         <xs:sequence>
-            <xs:element name="description" type="xs:string"></xs:element>
-            <xs:element name="productPhoto" type="productPhotoType"></xs:element>
-            <xs:element name="categoryProduct" type="categoryProductType"></xs:element>
+            <xs:element name="productPhoto" type="productPhotoType" minOccurs="0" maxOccurs="unbounded"></xs:element>
         </xs:sequence>
-        <xs:attribute name="name" type="xs:string" use="required" />
     </xs:complexType>
 
     <xs:complexType name="productPhotoType">
@@ -79,7 +90,9 @@
     </xs:complexType>
 
     <xs:complexType name="productPriceType">
-        <xs:attribute name="price" type="xs:decimal"/>
-        <xs:attribute name="currency" type="xs:string"/>
+        <xs:sequence>
+            <xs:element name="price" type="xs:string"></xs:element>
+        </xs:sequence>
+        <xs:attribute name="currency" type="xs:string" use="required"/>
     </xs:complexType>
 </xs:schema>
