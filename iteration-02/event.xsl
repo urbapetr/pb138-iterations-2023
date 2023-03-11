@@ -3,51 +3,26 @@
     <xsl:output method="text" />
 
     <xsl:template match="event">
-        <xsl:text>{</xsl:text>
-            <xsl:text>"id": </xsl:text>
-            <xsl:value-of select="@id" />
-            <xsl:text>,</xsl:text>
-            
-            <xsl:text>"eventname": "</xsl:text>
-            <xsl:value-of select="eventname" />
-            <xsl:text>",</xsl:text>
-            
-            <xsl:text>"date": "</xsl:text>
-            <xsl:value-of select="date" />
-            <xsl:text>",</xsl:text>
-            
-            <xsl:text>"location": "</xsl:text>
-            <xsl:value-of select="location" />
-            <xsl:text>",</xsl:text>
-            
-            <xsl:text>"description": "</xsl:text>
-            <xsl:value-of select="description" />
-            <xsl:text>",</xsl:text>
-            
-            <xsl:text>"attendees": [</xsl:text>
-            <xsl:apply-templates select="attendees/attendee" />
-            <xsl:text>]</xsl:text>
-            
-        <xsl:text>}</xsl:text>
+        {
+            "id": <xsl:value-of select="@id" />,            
+            "eventname": "<xsl:value-of select="eventname" />",            
+            "date": "<xsl:value-of select="date" />",            
+            "location": "<xsl:value-of select="location" />",            
+            "description": "<xsl:value-of select="description" />",            
+            "attendees": [<xsl:apply-templates select="attendees/attendee" />]            
+        }
         <xsl:if test="position() != last()">
-            <xsl:text>,</xsl:text>
+            ,
         </xsl:if>
     </xsl:template>
 
     <xsl:template match="attendee">
-        <xsl:text>{</xsl:text>
-        
-            <xsl:text>"id": </xsl:text>
-            <xsl:value-of select="@id" />
-            <xsl:text>,</xsl:text>
-            
-            <xsl:text>"username": "</xsl:text>
-            <xsl:value-of select="@username" />
-            <xsl:text>"</xsl:text>
-            
-        <xsl:text>}</xsl:text>
+        {        
+            "id": <xsl:value-of select="@id" />,            
+            "username": "<xsl:value-of select="@username" />"            
+        }
         <xsl:if test="position() != last()">
-            <xsl:text>,</xsl:text>
+            ,
         </xsl:if>
     </xsl:template>
 

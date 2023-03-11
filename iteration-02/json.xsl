@@ -6,18 +6,10 @@
     <xsl:include href="event.xsl" />
 
     <xsl:template match="/social">
-    <xsl:text>{</xsl:text>
-            <xsl:text>"users": [</xsl:text>
-            <xsl:apply-templates select="users/user" />
-            <xsl:text>],</xsl:text>
-            
-            <xsl:text>"groups": [</xsl:text>
-            <xsl:apply-templates select="groups/group" />
-            <xsl:text>],</xsl:text>
-            
-            <xsl:text>"events": [</xsl:text>
-            <xsl:apply-templates select="events/event" />
-            <xsl:text>]</xsl:text>
-    <xsl:text>}</xsl:text>
+    {
+        "users": [<xsl:apply-templates select="users/user" />],
+        "groups": [<xsl:apply-templates select="groups/group" />],            
+        "events": [<xsl:apply-templates select="events/event" />]
+    }
     </xsl:template>
 </xsl:stylesheet>
