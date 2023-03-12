@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="products" type="productsType"/>   
+
+    <xs:complexType name="productsType">
+        <xs:sequence>
+            <xs:element name="product" type="productType" maxOccurs="unbounded"></xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="productType">
+        <xs:sequence>
+            <xs:element name="description" type="xs:string"></xs:element>
+            <xs:element name="productPhotos" type="productPhotosType"></xs:element>
+            <xs:element name="categoryProduct" type="categoryProductType"></xs:element>
+            <xs:element name="storeProducts" type="storeProductsType"></xs:element>
+        </xs:sequence>
+        <xs:attribute name="name" type="xs:string" use="required" />
+    </xs:complexType>
+
+    <xs:complexType name="storeProductsType">
+        <xs:sequence>
+            <xs:element name="storeProduct" type="storeProductType" minOccurs="0" maxOccurs="unbounded"></xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="storeProductType">
+        <xs:sequence>
+            <xs:element name="reviews" type="reviewsType"></xs:element>
+            <xs:element name="store" type="storeType" maxOccurs="unbounded"></xs:element>
+            <xs:element name="productPrice" type="productPriceType" maxOccurs="unbounded"></xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="reviewsType">
+        <xs:sequence>
+            <xs:element name="review" type="reviewType" minOccurs="0" maxOccurs="unbounded"></xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="reviewType">
+        <xs:sequence>
+            <xs:element name="postedAt" type="xs:dateTime"></xs:element>
+            <xs:element name="comment" type="xs:string"></xs:element>
+            <xs:element name="customer" type="customerType"></xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="customerType">
+        <xs:sequence>
+            <xs:element name="email" type="xs:string"></xs:element>
+        </xs:sequence>
+        <xs:attribute name="name" type="xs:string" use="required" />
+        <xs:attribute name="verified" type="xs:boolean" default="false"/>
+    </xs:complexType>
+
+    <xs:complexType name="storeType">
+        <xs:sequence>
+            <xs:element name="location" type="xs:string"></xs:element>
+            <xs:element name="link" type="xs:string"></xs:element>
+            <xs:element name="logo" type="xs:string"></xs:element>
+        </xs:sequence>
+        <xs:attribute name="name" type="xs:string" use="required" />
+    </xs:complexType>
+
+    <xs:complexType name="productPhotosType">
+        <xs:sequence>
+            <xs:element name="productPhoto" type="productPhotoType" minOccurs="0" maxOccurs="unbounded"></xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="productPhotoType">
+        <xs:sequence>
+            <xs:element name="source" type="xs:string"></xs:element>
+            <xs:element name="showcase" type="xs:boolean"></xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="categoryProductType">
+        <xs:sequence>
+            <xs:element name="category" type="categoryType"></xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="categoryType">
+        <xs:sequence>
+            <xs:element name="picture" type="xs:string"></xs:element>
+        </xs:sequence>
+        <xs:attribute name="name" type="xs:string" use="required" />
+    </xs:complexType>
+
+    <xs:complexType name="productPriceType">
+        <xs:sequence>
+            <xs:element name="price" type="xs:string"></xs:element>
+        </xs:sequence>
+        <xs:attribute name="currency" type="xs:string" use="required"/>
+    </xs:complexType>
+</xs:schema>

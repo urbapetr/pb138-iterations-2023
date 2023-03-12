@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="schema.xsd"?>
+<products>
+    <product name="PlayStation 5">
+        <description>New video game console developed by Sony Interactive Entertainment.</description>
+        <productPhotos>
+            <productPhoto>
+                <source>https://herni-konzole.heureka.cz/playstation-5/#prehled/</source>
+                <showcase>true</showcase>
+            </productPhoto>
+        </productPhotos>
+        <categoryProduct>
+            <category name="Game console">
+                <picture>https://www.playstation.com/cs-cz/ps5/</picture>
+            </category>
+        </categoryProduct>
+        <storeProducts>
+            <storeProduct>
+                <reviews>
+                    <review>
+                        <postedAt>2023-02-23T14:18:11</postedAt>
+                        <comment>Using everyday, best product 10/10</comment>
+                        <customer name="Lover" verified="true">
+                            <email>lover@gmail.com</email>
+                        </customer>
+                    </review>
+                    <review>
+                        <postedAt>2023-02-25T12:45:17</postedAt>
+                        <comment>I dont understand, why would someone buy this.</comment>
+                        <customer name="Hater">
+                            <email>hater@gmail.com</email>
+                        </customer>
+                    </review>
+                </reviews>
+                <store name="CZC.CZ">
+                    <location>Czech Republic</location>
+                    <link>https://www.czc.cz/playstation-5-god-of-war-ragnarok/358552/produkt?utm_source=heureka.cz&amp;utm_medium=cpc&amp;utm_campaign=SEG02_CAT01_Gaming&amp;utm_content=GAM-Herni-konzole&amp;utm_id=heureka.cz_SEG02_CAT01_Gaming</link>
+                    <logo>https://www.czc.cz/</logo>
+                </store>
+                <productPrice currency="KČ">
+                    <price>15490</price>
+                </productPrice>
+            </storeProduct>
+
+            <storeProduct>
+                <reviews></reviews>
+                <store name="mall.cz">
+                    <location>Czech Republic</location>
+                    <link>https://www.mall.cz/herni-konzole/sony-playstation-5-god-of-war-ragnarok-ps719449492?utm_source=heureka.cz&amp;utm_medium=cse&amp;utm_campaign=EG&amp;utm_content=herni-konzole&amp;utm_term=25666761</link>
+                    <logo>https://www.mall.cz/</logo>
+                </store>
+                <productPrice currency="KČ">
+                    <price>14990</price>
+                </productPrice>
+            </storeProduct>
+        </storeProducts>
+    </product>
+
+    <product name="Microsoft Xbox Series X">
+        <description>The Xbox Series X is video game console developed by Microsoft.</description>
+        <productPhotos>
+            <productPhoto>
+                <source>https://herni-konzole.heureka.cz/microsoft-xbox-series-x/#prehled/</source>
+                <showcase>false</showcase>
+            </productPhoto>
+        </productPhotos>
+        <categoryProduct>
+            <category name="Game console">
+                <picture>https://www.playstation.com/cs-cz/ps5/</picture>
+            </category>
+        </categoryProduct>
+        <storeProducts></storeProducts>
+    </product>
+</products>
