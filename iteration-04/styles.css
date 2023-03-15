@@ -1,0 +1,160 @@
+.sidenav {
+    background-color: rgb(30, 30, 30);
+    color: white;
+    text-align: left;
+    width: 220px;
+    height: 100%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+}
+
+.sidenav > p {
+    padding-left: 30px;
+    font-family: "Brush Script MT", cursive;
+    font-size: 30px;
+}
+
+.category {
+    border-bottom: 1px solid gray;
+    padding: 20px 20px 10px 30px;
+    display: block;
+}
+
+.category p, .logout p {
+    display: inline;
+    padding-left: 20px;
+}
+
+.logout {
+    background-color: rgb(30, 30, 30);
+    padding: 5px 40px 5px 40px;
+    left: 20px;
+    right: 20px;
+    border: 1px solid gray;
+    border-color: white;
+    border-radius: 20px;
+    color: white;
+    position: absolute;
+    bottom: 10px;
+}
+
+.main {
+    margin-left: 20%;
+    margin-top: 30px;
+}
+
+.profile-pic {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+    float: left;
+
+  }
+
+.profile-pic > img {
+    position: absolute;
+    height: 320px;
+    width: 200px;
+    object-fit: cover;
+}
+
+.header {
+    width: 1000px;
+    height: 250px;
+    border-bottom: 1px solid gray;
+    overflow: hidden;
+}
+
+.info {
+    padding-left: 100px;
+    overflow: hidden;
+}
+
+.info h3 {
+    display: inline;
+    font-size: 30px;
+    font-weight: normal;
+}
+
+.info button {
+    background-color: #ece8e8;
+    border-radius: 10px;
+    border: none;
+    color: black;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: bold;
+    margin-left: 20px;
+}
+
+.info button:first-of-type {
+    margin-left: 40px;
+}
+
+.profile-state {
+    font-family: "Courier New", monospace;
+    font-size: 16px;
+}
+
+.profile-state a:not(:first-child) {
+    padding-left: 10px;
+}
+
+.tags {
+    font-family: "Helvetica", sans-serif;
+    font-size: 14px;
+}
+
+.posts {
+    width: 1000px;
+    overflow: hidden;
+}
+
+.posts img {
+    padding: 25px;
+}
+
+.posts img[onleft] {
+    padding-left: 0px;
+    overflow: hidden;
+    float: left;
+}
+
+.posts img[onright] {
+    padding-right: 0px;
+    overflow: hidden;
+    float: right;
+}
+
+.rect {
+    height: 300px;
+    width: 300px;
+    object-fit: cover;
+    overflow: hidden;
+}
+
+.tall {
+    width: 300px;
+    height: 650px;
+    object-fit: cover;
+    overflow: hidden;
+}
+
+.wide {
+    width: 650px;
+    height: 300px;
+    object-fit: cover;
+    overflow: hidden;
+}
+
+.clickable {
+    transition: .5s ease;
+    backface-visibility: hidden;
+}
