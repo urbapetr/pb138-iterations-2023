@@ -1,5 +1,5 @@
 .sidenav {
-    background-color: rgb(30, 30, 30);
+    background-color: #1E1E1E;
     color: white;
     text-align: left;
     width: 15vw;
@@ -28,7 +28,7 @@
 }
 
 .logout {
-    background-color: rgb(30, 30, 30);
+    background-color: #1E1E1E;
     padding: 5px 40px 5px 40px;
     left: 20px;
     right: 20px;
@@ -109,9 +109,10 @@
 }
 
 .tags {
-    font-family: "Helvetica", sans-serif;
+    font-family: Helvetica, sans-serif;
     font-size: 14px;
 }
+
 .posts {
     width: 61rem;
     height: 75rem;
@@ -127,6 +128,12 @@
     height: 20em;
     padding: 2px;
 }
+
+.post img {
+    width:100%; 
+    height:100%
+}
+
 .posts::after {
     content: "";
     clear: both;
