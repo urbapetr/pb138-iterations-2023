@@ -64,8 +64,8 @@ html, body {
     #categories {
         width: 393px;
         min-height: 42px;
-        padding: 0px;
-        margin: 0px;
+        padding: 0;
+        margin: 0;
     }
 }
 
@@ -84,8 +84,8 @@ html, body {
     .category {
         width: 78px;
         min-height: 40px;
-        padding: 0px;
-        margin: 0px;
+        padding: 0;
+        margin: 0;
         display: inline;
     }
 }
@@ -135,11 +135,9 @@ html, body {
         width: 78px;
         min-height: 40px;
         padding-bottom: 22px;
-        padding: 0px;
         padding-left: 351px;
-        margin: 0px;
-        margin-bottom: 0px;
-        border: 0px;
+        margin: 0;
+        border: 0;
         display: inline;
     }
 }
@@ -267,7 +265,7 @@ html, body {
     .info button {
         border-radius: 10px;
         padding: 10px 54px;
-        margin-left: 0px;
+        margin-left: 0;
         margin-top: 11px;
     }
 }
@@ -278,7 +276,7 @@ html, body {
 
 @media only screen and (max-width: 1200px) {
     .info button:first-of-type {
-        margin-left: 0px;
+        margin-left: 0;
     }
 }
 
@@ -295,7 +293,7 @@ html, body {
 
 @media only screen and (max-width: 1200px) {
     .profile-state {
-        padding-left: 0px;
+        padding-left: 0;
         padding-top: 221px;
         font-size: 20px;
         margin-top: 67px;
@@ -346,119 +344,216 @@ html, body {
     }
 }
 
-.posts img:nth-child(1) {
+.container {
+    position: relative;
     width: 300px;
     height: 300px;
-    padding: 0 937px 849px 0;
-    object-fit: cover;
-    object-position: center;
+    background-color: black;
+}
+
+#man_img {
+    opacity: 1;
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: .5s ease;
+    backface-visibility: hidden;
+}
+
+.middle {
+    transition: .5s ease;
+    opacity: 0;
     position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.container:hover #man_img {
+    opacity: 0.3;
+}
+
+.container:hover .middle {
+    opacity: 1;
+}
+
+.text {
+    color: white;
+    font-size: 20px;
+    font-family: Raleway, sans-serif;
+    padding: 16px 32px;
 }
 
 @media only screen and (max-width: 1200px) {
-    .posts img:nth-child(1) {
-        width: 230px;
-        height: 196px;
-        padding: 0 143px 513px 0;
-    }
-}
-
-.posts img:nth-child(2) {
-    width: 300px;
-    height: 300px;
-    padding: 0 607px 849px 330px;
-    object-fit: cover;
-    object-position: center;
-    position: absolute;
-}
-
-@media only screen and (max-width: 1200px) {
-    .posts img:nth-child(2) {
-        width: 112px;
-        height: 196px;
-        padding: 222px 24px 291px 237px;
-    }
-}
-
-.posts img:nth-child(3) {
-    width: 300px;
-    height: 632px;
-    padding: 0 277px 517px 660px;
-    object-fit: cover;
-    object-position: center;
-    position: absolute;
-}
-
-@media only screen and (max-width: 1200px) {
-    .posts img:nth-child(3) {
+    .container{
         visibility: hidden;
     }
 }
 
-.posts img:nth-child(4) {
+#man_img {
     width: 300px;
     height: 300px;
-    padding: 330px 937px 519px 0;
+    margin: 0 937px 849px 0;
     object-fit: cover;
     object-position: center;
     position: absolute;
 }
 
+#show_image {
+    display: none;
+}
+
+.container {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.container img {
+    object-fit: cover;
+}
+
+.larger_image {
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    visibility: hidden;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    transition: opacity 0.5s ease-in-out;
+}
+
+#show_image:checked ~ .larger_image {
+    opacity: 1;
+    visibility: visible;
+}
+
+#large_man_img {
+    height: 500px;
+    width: 500px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.large_image_container {
+    margin: 507px 614px;
+}
+
+#man_img_mobile {
+    visibility: hidden;
+}
+
 @media only screen and (max-width: 1200px) {
-    .posts img:nth-child(4) {
+    #man_img_mobile {
+        visibility: visible;
         width: 230px;
         height: 196px;
-        padding: 222px 143px 513px 0;
+        padding: 0 143px 513px 0;
+        object-fit: cover;
+        object-position: center;
+        position: absolute;
     }
 }
 
-.posts img:nth-child(5) {
+#dog_img {
     width: 300px;
     height: 300px;
-    padding: 330px 607px 519px 330px;
+    margin: 0 607px 849px 330px;
     object-fit: cover;
     object-position: center;
     position: absolute;
 }
 
 @media only screen and (max-width: 1200px) {
-    .posts img:nth-child(5) {
+    #dog_img {
         width: 112px;
         height: 196px;
-        padding: 0 24px 291px 237px;
+        margin: 222px 24px 291px 237px;
     }
 }
 
-.posts img:nth-child(6) {
+#fish_img {
+    width: 300px;
+    height: 632px;
+    margin: 0 277px 517px 660px;
+    object-fit: cover;
+    object-position: center;
+    position: absolute;
+}
+
+@media only screen and (max-width: 1200px) {
+    #fish_img {
+        visibility: hidden;
+    }
+}
+
+#glasses_img {
+    width: 300px;
+    height: 300px;
+    margin: 330px 937px 519px 0;
+    object-fit: cover;
+    object-position: center;
+    position: absolute;
+}
+
+@media only screen and (max-width: 1200px) {
+    #glasses_img {
+        width: 230px;
+        height: 196px;
+        margin: 222px 143px 513px 0;
+    }
+}
+
+#woman_img {
+    width: 300px;
+    height: 300px;
+    margin: 330px 607px 519px 330px;
+    object-fit: cover;
+    object-position: center;
+    position: absolute;
+}
+
+@media only screen and (max-width: 1200px) {
+    #woman_img {
+        width: 112px;
+        height: 196px;
+        margin: 0 24px 291px 237px;
+    }
+}
+
+#family_img {
     width: 620px;
     height: 300px;
-    padding: 660px 607px 189px 0;
+    margin: 660px 607px 189px 0;
     object-fit: cover;
     object-position: center;
     position: absolute;
 }
 
 @media only screen and (max-width: 1200px) {
-    .posts img:nth-child(6) {
+    #family_img {
         width: 230px;
         height: 196px;
-        padding: 432px 143px 513px 0;
+        margin: 432px 143px 513px 0;
     }
 }
 
-.posts img:nth-child(7) {
+#build_img {
     width: 300px;
     height: 300px;
-    padding: 660px 277px 189px 660px;
+    margin: 660px 277px 189px 660px;
     object-fit: cover;
     object-position: center;
     position: absolute;
 }
 
 @media only screen and (max-width: 1200px) {
-    .posts img:nth-child(7) {
+    #build_img {
         width: 112px;
         height: 196px;
-        padding: 432px 24px 291px 237px;
+        margin: 432px 24px 291px 237px;
     }
 }
