@@ -404,20 +404,20 @@ html, body {
     object-fit: cover;
 }
 
-.larger_image {
+.larger-image {
     opacity: 0;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: #000000bf;
     visibility: hidden;
     position: absolute;
     text-align: center;
-    padding: 507px 614px 456px 614px;
+    padding: 507px 614px 456px;
     top: 0;
     left: 0;
     z-index: 1;
     transition: opacity 0.5s ease-in-out;
 }
 
-#show-image:checked ~ .larger_image {
+#show-image:checked ~ .larger-image {
     opacity: 1;
     visibility: visible;
 }
