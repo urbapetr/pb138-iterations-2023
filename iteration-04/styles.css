@@ -349,13 +349,18 @@ html, body {
     width: 300px;
     height: 300px;
     background-color: black;
+    cursor: pointer;
 }
 
-#man_img {
+#man-img {
+    width: 300px;
+    height: 300px;
+    margin: 0 937px 849px 0;
+    object-fit: cover;
+    object-position: center;
+    position: absolute;
     opacity: 1;
     display: block;
-    width: 100%;
-    height: auto;
     transition: .5s ease;
     backface-visibility: hidden;
 }
@@ -367,11 +372,10 @@ html, body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
     text-align: center;
 }
 
-.container:hover #man_img {
+.container #man-img:hover {
     opacity: 0.3;
 }
 
@@ -392,22 +396,8 @@ html, body {
     }
 }
 
-#man_img {
-    width: 300px;
-    height: 300px;
-    margin: 0 937px 849px 0;
-    object-fit: cover;
-    object-position: center;
-    position: absolute;
-}
-
-#show_image {
+#show-image {
     display: none;
-}
-
-.container {
-    display: inline-block;
-    cursor: pointer;
 }
 
 .container img {
@@ -420,34 +410,35 @@ html, body {
     visibility: hidden;
     position: absolute;
     text-align: center;
+    padding: 507px 614px 456px 614px;
     top: 0;
     left: 0;
     z-index: 1;
     transition: opacity 0.5s ease-in-out;
 }
 
-#show_image:checked ~ .larger_image {
+#show-image:checked ~ .larger_image {
     opacity: 1;
     visibility: visible;
 }
 
-#large_man_img {
+#large-man-img {
     height: 500px;
     width: 500px;
     object-fit: cover;
     object-position: center;
 }
 
-.large_image_container {
+.large-image-container {
     margin: 507px 614px;
 }
 
-#man_img_mobile {
+#man-img-mobile {
     visibility: hidden;
 }
 
 @media only screen and (max-width: 1200px) {
-    #man_img_mobile {
+    #man-img-mobile {
         visibility: visible;
         width: 230px;
         height: 196px;
@@ -458,7 +449,7 @@ html, body {
     }
 }
 
-#dog_img {
+#dog-img {
     width: 300px;
     height: 300px;
     margin: 0 607px 849px 330px;
@@ -468,14 +459,14 @@ html, body {
 }
 
 @media only screen and (max-width: 1200px) {
-    #dog_img {
+    #dog-img {
         width: 112px;
         height: 196px;
         margin: 222px 24px 291px 237px;
     }
 }
 
-#fish_img {
+#fish-img {
     width: 300px;
     height: 632px;
     margin: 0 277px 517px 660px;
@@ -485,12 +476,12 @@ html, body {
 }
 
 @media only screen and (max-width: 1200px) {
-    #fish_img {
+    #fish-img {
         visibility: hidden;
     }
 }
 
-#glasses_img {
+#glasses-img {
     width: 300px;
     height: 300px;
     margin: 330px 937px 519px 0;
@@ -500,14 +491,14 @@ html, body {
 }
 
 @media only screen and (max-width: 1200px) {
-    #glasses_img {
+    #glasses-img {
         width: 230px;
         height: 196px;
         margin: 222px 143px 513px 0;
     }
 }
 
-#woman_img {
+#woman-img {
     width: 300px;
     height: 300px;
     margin: 330px 607px 519px 330px;
@@ -517,14 +508,14 @@ html, body {
 }
 
 @media only screen and (max-width: 1200px) {
-    #woman_img {
+    #woman-img {
         width: 112px;
         height: 196px;
         margin: 0 24px 291px 237px;
     }
 }
 
-#family_img {
+#family-img {
     width: 620px;
     height: 300px;
     margin: 660px 607px 189px 0;
@@ -534,14 +525,14 @@ html, body {
 }
 
 @media only screen and (max-width: 1200px) {
-    #family_img {
+    #family-img {
         width: 230px;
         height: 196px;
         margin: 432px 143px 513px 0;
     }
 }
 
-#build_img {
+#build-img {
     width: 300px;
     height: 300px;
     margin: 660px 277px 189px 660px;
@@ -551,7 +542,7 @@ html, body {
 }
 
 @media only screen and (max-width: 1200px) {
-    #build_img {
+    #build-img {
         width: 112px;
         height: 196px;
         margin: 432px 24px 291px 237px;
