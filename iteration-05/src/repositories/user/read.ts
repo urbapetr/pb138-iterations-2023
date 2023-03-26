@@ -29,9 +29,9 @@ import type { UserReadAllResult, UserReadSpecificResult } from './types/return';
  * deletedAt: Date | null,
  * posts: Post[]
  * })` on success
- *         - `Result.err(Error('The user has been deleted!'))` if the user 
+ *         - `Result.err(Error('The user has been deleted!'))` if the user
  *           has already been deleted
- *         - `Result.err(_)` - on all other failures 
+ *         - `Result.err(_)` - on all other failures
  *           (`_` meaning the original Prisma error)
  */
 const readSpecific = async (
@@ -70,7 +70,7 @@ const readSpecific = async (
  * email: string,
  * avatar: string
  * })` on success
- *          - `Result.err(_)` - on all other failures 
+ *          - `Result.err(_)` - on all other failures
  *            (`_` meaning the original Prisma error)
  */
 const readAll = async (

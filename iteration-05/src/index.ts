@@ -12,9 +12,9 @@
 // import userRepository from './repositories/user';
 
 console.log(
-  'Remove this log and write your own implementation here.' +
-    'You can use this to test your functions before running the seed or to test task 2. ' +
-    'Alternatively, run the showcaseRepositories function (uncomment everything related to it).',
+  'Remove this log and write your own implementation here.'
+    + 'You can use this to test your functions before running the seed or to test task 2. '
+    + 'Alternatively, run the showcaseRepositories function (uncomment everything related to it).',
 );
 
 // const showcaseRepositories = async () => {

@@ -18,14 +18,14 @@ import type { UserDeleteResult } from './types/return';
  *
  * Use Prisma's interactive transactions to obtain the user in question and
  * throw an error if the user with id passed via the function's parameter
- * does not exist. Then (in one query) "delete" user's existing comments 
+ * does not exist. Then (in one query) "delete" user's existing comments
  * (the comments that have NOT been deleted yet), user's posts
- * (the posts that have NOT been deleted yet) the user - set fields `deletedAt` 
- * (and `editedAt` for posts) for all of mentoned entities 
+ * (the posts that have NOT been deleted yet) the user - set fields `deletedAt`
+ * (and `editedAt` for posts) for all of mentoned entities
  * to **the same** current date. The result should contain only items that
  * have been affected by this query - previously deleted posts & comments
  * do NOT count.
- * 
+ *
  * Hint: you can perform nested updates within one update. You can also filter
  * the data you include.
  *
