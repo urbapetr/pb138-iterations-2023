@@ -12,6 +12,8 @@ import type { UserReadAllResult, UserReadSpecificResult } from './types/return';
  * Specification for the result:
  * 1. order all fields that obtain multiple records by their required date
  * field in descending order
+ * 2. only include posts that have not been deleted yet (those that have their
+ * `deletedAt` property set to `null`)
  *
  * Handle the situation where user has already been deleted by
  * throwing with a custom message:
