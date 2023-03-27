@@ -18,7 +18,7 @@ import type { CommentDeleteResult } from '../types/return';
  *
  * Handle the situation where comment is not created by the user with id
  * passed in the parameter of the function by throwing with a custom message:
- * 'The user is not the author of this comment!'
+ * 'The specified user is not the author of the comment!'
  *
  * Handle the situation where comment has already been deleted by throwing
  * with a custom message:
