@@ -69,8 +69,8 @@ const readSpecific = async (
  * @param parameters - optional parameters changing the query
  * @returns - `Result.ok({
  * userName: string,
- * email: string,
- * avatar: string
+ * avatar: string,
+ * createdAt: Date,
  * })` on success
  *          - `Result.err(_)` - on all other failures
  *            (`_` meaning the original Prisma error)
