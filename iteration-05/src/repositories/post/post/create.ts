@@ -7,6 +7,10 @@ import type { PostCreateResult } from '../types/return';
  * @todo Write a query for creating a post.
  *
  * Write only ONE Prisma query.
+ * 
+ * **Optional** change of the assignment -
+ * Write an interactive transaction which checks if the User has already
+ * been deleted or not. Throw a custom error of your choice.
  *
  * - The necessary data is provided in the data parameter.
  * - Check the result type to see what needs to be the output that is obtained
