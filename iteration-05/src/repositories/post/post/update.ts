@@ -21,7 +21,7 @@ import type { PostUpdateResult } from '../types/return';
  * Specification for the result:
  * 1. order all fields that obtain multiple records by their
  *    `createdAt` field in descending order
- * 2. include all post edits in the result
+ * 2. include all post edits - history in the result
  * 3. include the post creator in the result
  *
  * Use Prisma's interactive transactions to obtain the post in question and
@@ -45,7 +45,7 @@ import type { PostUpdateResult } from '../types/return';
  * @param data - data necessary for post update
  * @returns - `Result.ok(Post & {
  * creator: User,
- * edits: PostEdit[]
+ * history: PostEdit[]
  * })` on success
  *          - `Result.err('The user is not the author of this post!')` when
  *            the user is not the author of the post
