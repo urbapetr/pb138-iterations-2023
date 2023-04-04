@@ -16,7 +16,7 @@ import type { PostReadAllResult, PostReadSpecificResult } from '../types/return'
  * Specification for the result:
  * 1. only obtain the comments that have not been deleted yet
  * 2. order all fields that obtain multiple records by their required
- *    `createdAt` field in descending order. Order the post history 
+ *    `createdAt` field in descending order. Order the post history
  *    by the `editedAt` property in descending order.
  * 3. only include "public" information about users -
  *    emails, avatars and user names

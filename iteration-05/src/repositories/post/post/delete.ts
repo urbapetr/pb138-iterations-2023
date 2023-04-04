@@ -20,7 +20,7 @@ import type { PostDeleteData } from '../types/data';
  *    (has the same date of deletion as the post) - comments that were still
  *    public when the post was taken down by this repository call.
  * 3. order all fields that obtain multiple records by their required
- *    `createdAt` field in descending order. Order the post history 
+ *    `createdAt` field in descending order. Order the post history
  *    by the `editedAt` property in descending order.
  * 4. only include "public" information about users in the comments -
  *    date of creation, avatars and user names
