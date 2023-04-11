@@ -16,39 +16,43 @@ export const MainAuction: Story = {
     items: [
       {
           itemName: "X-wing",
-          itemImage: "",
+          itemImage: "assets/xwing.jfif",
           topBidderName: "Speed",
           topBid: 1000000,
           yourBid: 0,
           instantBuy: 4200,
-          sold: true
+          sold: true,
+          itemType: "Fighter"
       },
       {
           itemName: "Prometheus",
-          itemImage: "",
+          itemImage: "assets/prometheus.jfif",
           topBidderName: "Thomas",
           topBid: 15000000,
           yourBid: 15000000,
           instantBuy: 45800,
-          sold: false
+          sold: false,
+          itemType: "Capital ship"
       },
       {
           itemName: "Victory",
-          itemImage: "",
+          itemImage: "assets/victory.jpg",
           topBidderName: "Thomas",
           topBid: 9800000,
           yourBid: 9800000,
           instantBuy: 50065,
-          sold: true
+          sold: true,
+          itemType: "Capital ship"
       },
       {
           itemName: "Daedalus",
-          itemImage: "",
+          itemImage: "assets/daedalus.jfif",
           topBidderName: "Speed",
           topBid: 98000000,
           yourBid: 98000000,
           instantBuy: 58500,
-          sold: false
+          sold: false,
+          itemType: "Cruiser"
       },
   ],
   }

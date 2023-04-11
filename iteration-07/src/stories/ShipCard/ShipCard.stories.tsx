@@ -14,13 +14,13 @@ type Story = StoryObj<typeof meta>;
 export const Daedalus: Story = {
   args: {
     shipName: "USS Daedalus",
-    shipImage: "",
+    shipImage: "assets/daedalus.jfif",
   },
 };
 
 export const Aurora: Story = {
   args: {
     shipName: "Aurora",
-    shipImage: "",
+    shipImage: "assets/aurora.jpg",
   },
 };

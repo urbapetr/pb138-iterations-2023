@@ -14,7 +14,7 @@ type Story = StoryObj<typeof meta>;
 export const Speed : Story = {
   args: {
     playerName: "Speed",
-    playerImage: "",
+    playerImage: "assets/beginner.jfif",
     registeredAt: Date(),
     timePlayedSeconds: 15 * 60 * 60,
     rank: "Space pilot jr.",
@@ -24,7 +24,7 @@ export const Speed : Story = {
 export const Thomas : Story = {
   args: {
     playerName: "Thomas",
-    playerImage: "",
+    playerImage: "assets/chief.jpg",
     registeredAt: Date(),
     timePlayedSeconds: 365 * 60 * 60,
     rank: "DarkOrbit god",

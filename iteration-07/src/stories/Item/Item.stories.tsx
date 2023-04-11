@@ -18,6 +18,7 @@ export const Victory: Story =
     itemClassification: "Star destroyer",
     itemPrice: 64000000,
     itemDescription: "Make more of these bruh...",
+    itemImage: "assets/victory.jpg"
   }
 };
 
@@ -28,6 +29,7 @@ export const Prometheus: Story =
     itemClassification: "Tauri battlecruiser",
     itemPrice: 154000000,
     itemDescription: "Pretty pretty good...",
+    itemImage: "assets/prometheus.jfif"
   }
 };
 
@@ -38,5 +40,6 @@ export const Juggernaut: Story =
     itemClassification: "Republic tank",
     itemPrice: 6400000,
     itemDescription: "Big boy...",
+    itemImage: "assets/juggernaut.jpg"
   }
 };
