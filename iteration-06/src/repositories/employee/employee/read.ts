@@ -196,7 +196,7 @@ const multiple = async (
       where: employeeFilter,
       orderBy: [
         { surname: 'asc' },
-        { name: 'desc' },
+        { name: 'asc' },
         { createdAt: 'desc' },
       ],
       include: {

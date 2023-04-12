@@ -66,4 +66,6 @@ export type TimetableSearchable = {
   to: Date,
 };
 
-export type CheckConflictingTimetableRecordsData = TimetableSearchable;
+export type CheckConflictingTimetableRecordsData = TimetableSearchable & {
+  timetableId?: string;
+};

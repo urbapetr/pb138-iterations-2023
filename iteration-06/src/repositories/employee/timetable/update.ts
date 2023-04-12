@@ -58,7 +58,12 @@ const update = async (data: TimetableUpdateData): TimetableUpdateResult => {
       }
 
       const conflictsCheck = await checkConflictingTimetableRecords(
-        { employeeId: data.employeeId, from: data.from, to: data.to },
+        {
+          employeeId: data.employeeId,
+          from: data.from,
+          to: data.to,
+          timetableId: data.id
+        },
         tx,
       );
 

@@ -167,6 +167,13 @@ export const checkConflictingTimetableRecords = async (
   data: CheckConflictingTimetableRecordsData,
   tx: PrismaTransactionHandle,
 ): TransactionCheckOperationResult => {
+  const checkExisting = data.timetableId !== undefined ? {
+    AND: {
+      NOT: {
+        id: data.timetableId,
+      },
+  }} : {};
+
   /**
    * Write a search query that you will need to use in create and update
    * repository calls to check if there are clashing timetable records already
@@ -194,6 +201,7 @@ export const checkConflictingTimetableRecords = async (
           the one we wish to create/update finishes.
         */
       },
+      ...checkExisting,
     },
   });
 

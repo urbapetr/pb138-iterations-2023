@@ -40,3 +40,6 @@ yarn.lock
 
 # ignore .env files
 **/.env
+
+# ignore test dbs if left behind
+test*.db

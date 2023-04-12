@@ -1,5 +1,5 @@
 {
-  "extends": "@tsconfig/node18-strictest",
+  "extends": "@tsconfig/node18-strictest/tsconfig.json",
   "compilerOptions": {
     /* Language and Environment */
     "target": "ESNext",                                  /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */
@@ -30,5 +30,5 @@
         
     "skipLibCheck": true                              /* Skip type checking all .d.ts files. */
   },
-  "include": ["**/*.ts"],
+  "include": ["**/*.ts"]
 }

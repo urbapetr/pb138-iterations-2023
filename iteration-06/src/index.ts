@@ -6,7 +6,7 @@ import type { ApiResponse } from './controllers/types';
 
 configEnvVariables();
 const app = express();
-const port = env['PORT'] ?? 3000;
+const port = env.PORT ?? 3000;
 
 // CORS middlware
 app.use(cors());
@@ -39,8 +39,12 @@ app.use((_req, res) => {
   return res.status(404).send(response);
 });
 
-app.listen(port, () => {
-  console.log(
-    `[${new Date().toISOString()}] RESTful API for iteration 06 is listening on port ${port}`,
-  );
-});
+if (env.NODE_ENV !== 'test') {
+  app.listen(port, () => {
+    console.log(
+      `[${new Date().toISOString()}] RESTful API for iteration 06 is listening on port ${port}`,
+    );
+  });
+}
+
+export default app;
