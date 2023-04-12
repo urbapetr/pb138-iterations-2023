@@ -82,7 +82,6 @@ describe('DELETE /employee/:id/timetable/:id', () => {
 
     const result = await request(app)
       .delete(`/employee/${sumRandoId}/timetable/${sumRandoId}`)
-      .send(timetableEntry)
       .expect(404);
 
     expect(result.body).toEqual(
