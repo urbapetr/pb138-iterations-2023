@@ -62,7 +62,7 @@ const update = async (data: TimetableUpdateData): TimetableUpdateResult => {
           employeeId: data.employeeId,
           from: data.from,
           to: data.to,
-          timetableId: data.id
+          timetableId: data.id,
         },
         tx,
       );

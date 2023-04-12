@@ -81,7 +81,7 @@ describe('DELETE /employee/:id/timetable/:id', () => {
     };
 
     const result = await request(app)
-      .patch(`/employee/${sumRandoId}/timetable/${sumRandoId}`)
+      .delete(`/employee/${sumRandoId}/timetable/${sumRandoId}`)
       .send(timetableEntry)
       .expect(404);
 

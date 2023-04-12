@@ -172,7 +172,8 @@ export const checkConflictingTimetableRecords = async (
       NOT: {
         id: data.timetableId,
       },
-  }} : {};
+    },
+  } : {};
 
   /**
    * Write a search query that you will need to use in create and update
