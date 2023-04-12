@@ -70,16 +70,6 @@ describe('DELETE /employee/:id/timetable/:id', () => {
   it('should return fail if the employee and/or entry does not exist', async () => {
     const sumRandoId = '9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d';
 
-    const from = new Date().toISOString();
-    vi.advanceTimersByTime(1000 * 60 * 60 * 2); // Two hours
-    const to = new Date().toISOString();
-
-    const timetableEntry = {
-      from,
-      to,
-      type: 'Working',
-    };
-
     const result = await request(app)
       .delete(`/employee/${sumRandoId}/timetable/${sumRandoId}`)
       .expect(404);
