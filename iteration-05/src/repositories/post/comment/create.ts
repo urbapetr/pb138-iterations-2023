@@ -46,14 +46,46 @@ const create = async (data: CommentCreateData): CommentCreateResult => {
   try {
     return Result.ok(
       await prisma.$transaction(async (transaction) => {
-        /* write code here as you usually would, the transaction only
-         * encapsulates this operation - all must succeed for the operation to
-         * propagate into the database
-         *
-         * use "transaction" parameter instead of the usual "prisma"
-         * Write your code here, remove this comment before you do so. */
+        const user = await transaction.user.findUniqueOrThrow({
+          where: {
+            id: data.commenterId,
+          },
+        });
 
-        throw new Error('[TODO]: Unimplemented - remove me and write the solution');
+        if (user.deletedAt != null) {
+          throw new Error('The user has been deleted!');
+        }
+
+        const post = await transaction.post.findUniqueOrThrow({
+          where: {
+            id: data.postId,
+          },
+        });
+
+        if (post.deletedAt != null) {
+          throw new Error('The post has been deleted!');
+        }
+
+        const result = await transaction.comment.create({
+          data: {
+            content: data.content,
+            postId: data.postId,
+            commenterId: data.commenterId,
+          },
+          include: {
+            commenter: true,
+            post: {
+              select: {
+                id: true,
+                createdAt: true,
+                editedAt: true,
+                deletedAt: true,
+                content: true,
+              },
+            },
+          },
+        });
+        return result;
       }),
     );
   } catch (e) {

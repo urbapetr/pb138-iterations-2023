@@ -28,8 +28,25 @@ import type { UserLoginData } from './types/data';
  */
 const login = async (data: UserLoginData): UserLoginResult => {
   try {
-    // Write the code here, remove this comment before you do so.
-    throw new Error('[TODO]: Unimplemented - remove me and write the solution');
+    return Result.ok(
+      await prisma.$transaction(async (transaction) => {
+        const result = transaction.user.findFirstOrThrow({
+          where: {
+            email: data.email,
+          },
+          select: {
+            id: true,
+            deletedAt: true,
+          },
+        });
+
+        if ((await result).deletedAt != null) {
+          throw new Error('The user has been deleted!');
+        }
+
+        return { id: (await result).id };
+      }),
+    );
   } catch (e) {
     return Result.err(e as Error);
   }

@@ -41,8 +41,40 @@ import type { PostReadAllResult, PostReadSpecificResult } from '../types/return'
  */
 const specific = async (data: PostReadSpecificData): PostReadSpecificResult => {
   try {
-    // Write the code here, remove this comment before you do so.
-    throw new Error('[TODO]: Unimplemented - remove me and write the solution');
+    return Result.ok(
+      await prisma.$transaction(async (transaction) => {
+        const result = transaction.post.findUniqueOrThrow({
+          where: {
+            id: data.id,
+          },
+          select: {
+            id: true,
+            createdAt: true,
+            editedAt: true,
+            deletedAt: true,
+            content: true,
+            comments: {
+              select: {
+                id: true,
+                createdAt: true,
+                content: true,
+                commenter: true,
+                post: {
+                  select: {
+                    creator: true,
+                    comments: true,
+                    history: true,
+                  },
+                },
+              },
+            },
+            creator: true,
+            history: true,
+          },
+        });
+        return result;
+      }),
+    );
   } catch (e) {
     return Result.err(e as Error);
   }
@@ -79,8 +111,16 @@ export const all = async (
   parameters?: PostReadAllParameters,
 ): PostReadAllResult => {
   try {
-    // Write the code here, remove this comment before you do so.
-    throw new Error('[TODO]: Unimplemented - remove me and write the solution');
+    return Result.ok(
+      await prisma.$transaction(async (transaction) => {
+        const result = transaction.post.findMany({
+          where: {
+            id: parameters?.postIds,
+            deletedAt: null,
+          },
+        });
+      }),
+    );
   } catch (e) {
     return Result.err(e as Error);
   }

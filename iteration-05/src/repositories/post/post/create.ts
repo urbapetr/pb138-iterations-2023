@@ -27,8 +27,20 @@ import type { PostCreateResult } from '../types/return';
  */
 const create = async (data: PostCreateData): PostCreateResult => {
   try {
-    // Write the code here, remove this comment before you do so.
-    throw new Error('[TODO]: Unimplemented - remove me and write the solution');
+    return Result.ok(
+      await prisma.$transaction(async (transaction) => {
+        const result = await transaction.post.create({
+          data: {
+            creatorId: data.creatorId,
+            content: data.content,
+          },
+          include: {
+            creator: true,
+          },
+        });
+        return result;
+      }),
+    );
   } catch (e) {
     return Result.err(e as Error);
   }
