@@ -1,4 +1,5 @@
 import { Result } from '@badrap/result';
+import type { Prisma } from '@prisma/client';
 import prisma from '../client';
 import type { UserReadAllParameters, UserReadSpecificData } from './types/data';
 import type { UserReadAllResult, UserReadSpecificResult } from './types/return';
@@ -52,7 +53,18 @@ const readSpecific = async (
             avatar: true,
             createdAt: true,
             deletedAt: true,
-            posts: true,
+            posts: {
+              where: {
+                deletedAt: null,
+              },
+              select: {
+                content: true,
+                createdAt: true,
+                deletedAt: true,
+                editedAt: true,
+                id: true,
+              },
+            },
           },
         });
 
@@ -105,19 +117,17 @@ const readAll = async (
         const result = transaction.user.findMany({
           where: {
             deletedAt: null,
-            userName: {
-              in: parameters?.userNames,
-            },
+            userName: { in: parameters?.userNames } as Prisma.StringFilter,
           },
           select: {
             userName: true,
             avatar: true,
             createdAt: true,
-            deletedAt: true,
           },
-          orderBy: {
-            createdAt: 'desc',
-          },
+          orderBy: [
+            { createdAt: parameters?.order ?? 'desc' },
+            { userName: parameters?.order ?? 'asc' },
+          ],
         });
 
         return result;

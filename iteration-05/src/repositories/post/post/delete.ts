@@ -67,13 +67,72 @@ const deletePost = async (data: PostDeleteData): PostDeleteResult => {
   try {
     return Result.ok(
       await prisma.$transaction(async (transaction) => {
-        /* write code here as you usually would, the transaction only
-         * encapsulates this operation - all must succeed for the operation to
-         * propagate into the database
-         *
-         * use "transaction" parameter instead of the usual "prisma"
-         * Write your code here, remove this comment before you do so. */
-        throw new Error('[TODO]: Unimplemented - remove me and write the solution');
+        const checkPost = await transaction.post.findUniqueOrThrow({
+          where: {
+            id: data.id,
+          },
+        });
+
+        if (checkPost.deletedAt !== null) {
+          throw new Error('The post has already been deleted!');
+        }
+
+        if (checkPost.creatorId !== data.creatorId) {
+          throw new Error('The user is not the author of this post!');
+        }
+
+        const result = await transaction.post.update({
+          where: {
+            id: data.id,
+          },
+          data: {
+            deletedAt,
+            editedAt: deletedAt,
+            comments: {
+              updateMany: {
+                where: {
+                  deletedAt: null,
+                },
+                data: {
+                  deletedAt,
+                },
+              },
+            },
+          },
+          include: {
+            comments: {
+              where: {
+                deletedAt,
+              },
+              select: {
+                id: true,
+                createdAt: true,
+                commenter: {
+                  select: {
+                    userName: true,
+                    avatar: true,
+                    createdAt: true,
+                  },
+                },
+                content: true,
+                commenterId: false,
+                deletedAt: false,
+                postId: false,
+              },
+              orderBy: {
+                createdAt: 'desc',
+              },
+            },
+            creator: true,
+            history: {
+              orderBy: {
+                editedAt: 'desc',
+              },
+            },
+          },
+        });
+
+        return result;
       }),
     );
   } catch (e) {

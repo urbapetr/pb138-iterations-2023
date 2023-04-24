@@ -54,15 +54,47 @@ import type { PostUpdateResult } from '../types/return';
  */
 const update = async (data: PostUpdateData): PostUpdateResult => {
   try {
+    const editedAt = new Date();
+
     return Result.ok(
       await prisma.$transaction(async (transaction) => {
-        /* write code here as you usually would, the transaction only
-         * encapsulates this operation - all must succeed for the operation to
-         * propagate into the database
-         *
-         * use "transaction" parameter instead of the usual "prisma"
-         * Write your code here, remove this comment before you do so. */
-        throw new Error('[TODO]: Unimplemented - remove me and write the solution');
+        const checkPost = await transaction.post.findUniqueOrThrow({
+          where: {
+            id: data.postId,
+          },
+        });
+
+        if (checkPost.deletedAt !== null) {
+          throw new Error('The post has been deleted!');
+        }
+
+        if (checkPost.creatorId !== data.creatorId) {
+          throw new Error('The user is not the author of this post!');
+        }
+
+        await transaction.postEdit.create({
+          data: {
+            postId: checkPost.id,
+            content: checkPost.content,
+            editedAt: checkPost.editedAt,
+          },
+        });
+
+        const result = await transaction.post.update({
+          where: {
+            id: data.postId,
+          },
+          data: {
+            content: data.newContent,
+            editedAt,
+          },
+          include: {
+            creator: true,
+            history: true,
+          },
+        });
+
+        return result;
       }),
     );
   } catch (e) {

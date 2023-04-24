@@ -1,4 +1,5 @@
 import { Result } from '@badrap/result';
+import type { Prisma } from '@prisma/client';
 import prisma from '../../client';
 import type { PostReadMultipleParameters as PostReadAllParameters, PostReadSpecificData } from '../types/data';
 import type { PostReadAllResult, PostReadSpecificResult } from '../types/return';
@@ -54,24 +55,44 @@ const specific = async (data: PostReadSpecificData): PostReadSpecificResult => {
             deletedAt: true,
             content: true,
             comments: {
+              where: {
+                deletedAt: null,
+              },
               select: {
                 id: true,
                 createdAt: true,
                 content: true,
-                commenter: true,
-                post: {
+                commenter: {
                   select: {
-                    creator: true,
-                    comments: true,
-                    history: true,
+                    avatar: true,
+                    createdAt: true,
+                    userName: true,
                   },
                 },
               },
+              orderBy: {
+                createdAt: 'desc',
+              },
             },
-            creator: true,
-            history: true,
+            creator: {
+              select: {
+                avatar: true,
+                createdAt: true,
+                userName: true,
+              },
+            },
+            history: {
+              orderBy: {
+                editedAt: 'desc',
+              },
+            },
           },
         });
+
+        if ((await result).deletedAt !== null) {
+          throw new Error('The post does not exist anymore!');
+        }
+
         return result;
       }),
     );
@@ -113,12 +134,51 @@ export const all = async (
   try {
     return Result.ok(
       await prisma.$transaction(async (transaction) => {
-        const result = transaction.post.findMany({
+        const result = await transaction.post.findMany({
           where: {
-            id: parameters?.postIds,
+            id: { in: parameters?.postIds } as Prisma.StringFilter,
             deletedAt: null,
           },
+          select: {
+            id: true,
+            createdAt: true,
+            editedAt: true,
+            deletedAt: true,
+            content: true,
+            comments: {
+              where: {
+                deletedAt: null,
+              },
+              select: {
+                commenter: {
+                  select: {
+                    avatar: true,
+                    createdAt: true,
+                    userName: true,
+                  },
+                },
+                id: true,
+                createdAt: true,
+                content: true,
+              },
+              orderBy: {
+                createdAt: 'desc',
+              },
+            },
+            creator: {
+              select: {
+                avatar: true,
+                createdAt: true,
+                userName: true,
+              },
+            },
+          },
+          orderBy: {
+            editedAt: parameters?.order ?? 'desc',
+          },
         });
+
+        return result;
       }),
     );
   } catch (e) {
