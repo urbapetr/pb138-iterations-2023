@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="styles/normalize.css" />
+    <link rel="stylesheet" href="styles/style.css" />
+    <title>Discord iteration</title>
+  </head>
+
+  <body class="app">
+    <div class="header"></div>
+
+    <nav class="sidebar">
+      <div class="sidebar__header">
+        <h1>Star Wars</h1>
+      </div>
+      <ul class="sidebar__list">
+        <li class="channel">
+          <div class="channel__icon channel__icon--title">
+            <img
+              src="static-files/icons/arrow-down.svg"
+              alt="Server channel icon"
+            />
+          </div>
+          <span class="channel__name channel__name--title">Channels</span>
+        </li>
+
+        <li class="channel">
+          <div class="channel__icon">
+            <img
+              src="static-files/icons/hashtag.svg"
+              alt="Server channel icon"
+            />
+          </div>
+          <span class="channel__name">the-phantom-menace</span>
+        </li>
+
+        <li class="channel">
+          <div class="channel__icon">
+            <img
+              src="static-files/icons/hashtag.svg"
+              alt="Server channel icon"
+            />
+          </div>
+          <span class="channel__name">attack-of-the-clones</span>
+        </li>
+        <li class="channel">
+          <div class="channel__icon">
+            <img
+              src="static-files/icons/hashtag.svg"
+              alt="Server channel icon"
+            />
+          </div>
+          <span class="channel__name">revenge-of-the-sith</span>
+        </li>
+        <li class="channel">
+          <div class="channel__icon">
+            <img
+              src="static-files/icons/hashtag.svg"
+              alt="Server channel icon"
+            />
+          </div>
+          <span class="channel__name">a-new-hope</span>
+        </li>
+        <li class="channel">
+          <div class="channel__icon">
+            <img
+              src="static-files/icons/hashtag.svg"
+              alt="Server channel icon"
+              class="channel__icon"
+            />
+          </div>
+          <span class="channel__name">the-empire-strikes-back</span>
+        </li>
+        <li class="channel">
+          <div class="channel__icon">
+            <img
+              src="static-files/icons/hashtag.svg"
+              alt="Server channel icon"
+              class="channel__icon"
+            />
+          </div>
+          <span class="channel__name">return-of-the-jedi</span>
+        </li>
+        <a href="slack-main-view.html">
+          <li class="channel channel--active">
+            <div class="channel__icon channel__icon--new">
+              <img
+                src="static-files/icons/plus.svg"
+                alt="Server channel icon"
+              />
+            </div>
+            <span class="channel__name">Add new channel</span>
+          </li>
+        </a>
+      </ul>
+    </nav>
+
+    <div class="main-view">
+      <div class="main-view__header">
+        <div class="main-view__title">
+          <h2>Create new channel</h2>
+        </div>
+      </div>
+
+      <div class="main-view__content">
+        <div class="channel-form">
+          <h3>Create a new Star Wars-themed channel!</h3>
+          <p class="channel-form__motivation-paragraph"> This is the place for all fans of the galaxy far, far away. Discuss your favorite moments, debate the best movies, and speculate on the future of the franchise. Join the conversation and May the Force be with you!</p>
+          <label class="channel-form__label">Channel name</label>
+          <input class="channel-form__input" />
+          <label class="channel-form__label">Channel description</label>
+          <input class="channel-form__input"/>
+          <button class="channel-form__button">Create</button>
+        </div>
+      </div>
+    </div>
+    
+  </body>
+</html>
