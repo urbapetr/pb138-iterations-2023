@@ -18,6 +18,7 @@ import {
   WrongOwnershipError,
 } from './types/errors';
 import type { TransactionCheckOperationResult } from './types/return';
+import { threadId } from 'worker_threads';
 
 /*
 
@@ -75,7 +76,21 @@ export const checkEmployee = async (
   data: CheckEmployeeData,
   tx: PrismaTransactionHandle,
 ): TransactionCheckOperationResult => {
-  throw new Error('Remove this error and start coding.');
+  const employee = await tx.employee.findUnique({
+    where: {
+      id: data.id,
+    },
+  });
+
+  if (!employee) {
+    return Result.err(new NonexistentRecordError('The specified employee does not exist!'));
+  }
+
+  if (employee.deletedAt !== null) {
+    return Result.err(new DeletedRecordError('The specified employee has already been deleted!'));
+  }
+
+  return Result.ok({});
 };
 
 /**
@@ -121,7 +136,25 @@ export const checkTimetableRecord = async (
   data: CheckTimetableRecordData,
   tx: PrismaTransactionHandle,
 ): TransactionCheckOperationResult => {
-  throw new Error('Remove this error and start coding.');
+  const timetable = await tx.attendance.findUnique({
+    where: {
+      id: data.id,
+    },
+  });
+
+  if (!timetable) {
+    return Result.err(new NonexistentRecordError('The specified timetable record does not exist!'));
+  }
+
+  if (timetable.deletedAt !== null) {
+    return Result.err(new DeletedRecordError('The specified timetable has already been deleted!'));
+  }
+
+  if (timetable.employeeId !== data.employeeId) {
+    return Result.err(new WrongOwnershipError('The specified timetable record does not belong to the specified user!'));
+  }
+
+  return Result.ok({});
 };
 
 /**
