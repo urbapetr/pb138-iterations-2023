@@ -10,6 +10,7 @@ import type {
   EmployeeReadSpecificResult,
 } from '../types/return';
 import { genericError } from '../../types';
+import { checkEmployee } from '../common';
 
 /**
  * Create a repository call that reads data about a specific employee.
@@ -35,8 +36,8 @@ const specific = async (
   data: EmployeeReadSpecificData,
 ): EmployeeReadSpecificResult => {
   try {
-    /* Finish the query, explicitly handle the errors decribed in docstring */
-    throw new Error('Remove this error and start coding.');
+    const tx = await prisma.$transaction({});
+    await checkEmployee({ id: data.id }, tx);
   } catch (e) {
     return genericError;
   }

@@ -18,7 +18,6 @@ import {
   WrongOwnershipError,
 } from './types/errors';
 import type { TransactionCheckOperationResult } from './types/return';
-import { threadId } from 'worker_threads';
 
 /*
 
