@@ -13,19 +13,17 @@ html, body {
     margin: 0;
 }
 
-@media only screen and (min-width: 1200px) {
+@media only screen and (width >= 1200px) {
     .container {
         height: 100vh;
         margin: 0;
         display: grid;
-        grid-template-columns: 17% 10% 50% auto;
+        grid-template-columns: [sidebar] 17% 10% [main] 50% auto;
         grid-template-rows: auto;
-        grid-template-areas: 
-        'sidebar . main .';
     }
 
     .item-sidebar {
-        grid-area: sidebar;
+        grid-column: sidebar;
         background-color: #1E1E1E;
         display: grid;
         grid-template-columns: auto;
@@ -74,7 +72,7 @@ html, body {
 
     .item-content {
         display: grid;
-        grid-column-start: main;
+        grid-column: main;
         grid-template-columns: auto;
         grid-template-rows: [profile-info] 18% [photos] auto;
         padding-top: 5%;
@@ -88,7 +86,6 @@ html, body {
         row-gap: 2%;
         font-family: Raleway, sans-serif;
         grid-template-columns: [profile-pic] 33% repeat(3, auto [info]);
-        grid-template-rows: repeat(3, 33%);
         grid-template-areas: 
         'profile-pic name edit settings'
         'profile-pic posts followers following'
@@ -133,7 +130,7 @@ html, body {
     .item-profile {
         grid-area: profile-pic;
         border-radius: 50%;
-        background-image: url(images/profile-avatar.webp);
+        background-image: url('images/profile-avatar.webp');
         background-size: cover;
         height: 60%;
         aspect-ratio: 1/1;
@@ -148,7 +145,6 @@ html, body {
         row-gap: 2%;
         grid-auto-flow: dense;
         grid-template-columns: repeat(3, 32%) 4%;
-        grid-template-rows: repeat(3, 33%);
         grid-template-areas: 
         'img1 img2 img3 .'
         'img4 img5 img3 .'
@@ -190,20 +186,17 @@ html, body {
     }
 }
 
-@media only screen and (max-width: 1200px) {    
+@media only screen and (width < 1200px) {    
     .container {
         height: 100vh;
         margin: 0;
         display: grid;
         grid-template-columns: auto;
-        grid-template-rows: 94% 6%;
-        grid-template-areas: 
-        'main'
-        'sidebar';
+        grid-template-rows: [main] 94% [sidebar] 6%;
     }
     
     .item-sidebar {
-        grid-area: sidebar;
+        grid-row: sidebar;
         background-color: #1E1E1E;
         display: grid;
         grid-template-columns: repeat(5, auto);
@@ -236,7 +229,7 @@ html, body {
     
     .item-content {
         display: grid;
-        grid-column-start: main;
+        grid-row: main;
         grid-template-columns: auto;
         grid-template-rows: [profile-info] 30% [photos] auto;
         padding: 5%;
@@ -249,7 +242,6 @@ html, body {
         row-gap: 2%;
         font-family: Raleway, sans-serif;
         grid-template-columns: repeat(3, 33%);
-        grid-template-rows: repeat(4, 25%);
         grid-template-areas: 
         'profile-pic name name'
         'profile-pic edit edit'
@@ -260,7 +252,7 @@ html, body {
     .item-profile {
         grid-area: profile-pic;
         border-radius: 50%;
-        background-image: url(images/profile-avatar.webp);
+        background-image: url('images/profile-avatar.webp');
         background-size: cover;
         height: 60%;
         aspect-ratio: 1/1;
