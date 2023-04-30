@@ -312,12 +312,11 @@ html, body {
         column-gap: 5%;
         row-gap: 2%;
         grid-auto-flow: dense;
-        grid-template-columns: 66% 33%;
-        grid-template-rows: repeat(3, 22%);
-        grid-template-areas: 
-        'img1 img5'
-        'img4 img2'
-        'img6 img7';
+        grid-template: 
+        'img1 img5' 22%
+        'img4 img2' 22%
+        'img6 img7' 22%
+        / 66% 33%;
     }
     
     .item-img1 {
