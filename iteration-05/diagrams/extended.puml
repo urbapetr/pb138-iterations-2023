@@ -67,15 +67,8 @@ entity DirectMessage {
     ---
     * senderId: <<FK>>
     * recipientId: <<FK>>
-    * createdAt: timestamp
-    * content: string
-}
-
-entity MessageReply {
-    * id: <<uuid>>
-    ---
-    * messageId: <<FK>>
     * replyId: <<FK>>
+    * createdAt: timestamp
     * content: string
 }
 
@@ -94,24 +87,13 @@ entity GroupChatMemeber {
     * isAdmin: boolean
 }
 
-entity GroupChatMessage {
-    * id: <<uuid>>
-    ---
-    * groupId: <<FK>>
-    * senderId: <<FK>>
-    * createdAt: timestamp
-    * content: string
-}
-
 User ||--{ Reaction : reacts
 Post ||--{ Reaction : has reactions
-User ||--|{ DirectMessage : recipient
-User ||--o{ DirectMessage : sender
-DirectMessage ||--o{ MessageReply : replies to
+DirectMessage ||--o{ DirectMessage : replies to
 User }--|| GroupChatMemeber : has admin role
 GroupChatMemeber }--|| GroupChat : is member of
-User ||--|{ GroupChatMessage : recipient
-User ||--o{ GroupChatMessage : sender
-GroupChat ||--{ GroupChatMessage : contains
+User ||--|{ DirectMessage : recipient
+User ||--o{ DirectMessage : sender
+GroupChat ||--{ DirectMessage : contains
 
 @enduml

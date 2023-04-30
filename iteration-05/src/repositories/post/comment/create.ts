@@ -67,11 +67,7 @@ const create = async (data: CommentCreateData): CommentCreateResult => {
         }
 
         const result = await transaction.comment.create({
-          data: {
-            content: data.content,
-            postId: data.postId,
-            commenterId: data.commenterId,
-          },
+          data,
           include: {
             commenter: true,
             post: {

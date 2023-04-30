@@ -71,9 +71,12 @@ const deleteComment = async (data: CommentDeleteData): CommentDeleteResult => {
           throw new Error('The comment has already been deleted!');
         }
 
-        await transaction.comment.delete({
+        await transaction.comment.update({
           where: {
             id: data.id,
+          },
+          data: {
+            deletedAt: new Date(),
           },
         });
 
