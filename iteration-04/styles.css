@@ -13,7 +13,7 @@ html, body {
     margin: 0;
 }
 
-@media (width >= 1200px) {
+@media screen and (width >= 768px) {
     .container {
         height: 100vh;
         margin: 0;
@@ -186,7 +186,7 @@ html, body {
     }
 }
 
-@media (width < 1200px) {    
+@media screen and (width < 768px) {    
     .container {
         height: 100vh;
         margin: 0;
