@@ -21,6 +21,11 @@ model User {
   avatar         String
   posts          Post[]
   comments       Comment[]
+  reactions      Reaction[]
+  sentMessages   Message[] @relation("sender")
+  receivedMessages Message[] @relation("receiver")
+  groupChats      GroupChat[] @relation("members")
+  adminChats     GroupChat[] @relation("admins")
 }
 
 model Post {
@@ -33,6 +38,7 @@ model Post {
   content   String
   history   PostEdit[]
   comments  Comment[]
+  reactions Reaction[]
 }
 
 model PostEdit {
@@ -54,5 +60,32 @@ model Comment {
   content     String
 }
 
-// Extend the diagram here, also add necessary
-// fields to existing models above ^^:
+model Reaction {
+  id       String   @id @default(uuid())
+  type     String
+  user     User     @relation(fields: [userId], references: [id])
+  userId   String
+  post     Post?    @relation(fields: [postId], references: [id])
+  postId   String?
+}
+
+model GroupChat {
+  id       String    @id @default(uuid())
+  createdAt DateTime  @default(now())
+  name     String?
+  members User[] @relation("members")
+  messages Message[] @relation("chatMessages")
+  admins   User[]   @relation("admins")
+}
+
+model Message {
+  id           String   @id @default(uuid())
+  sender       User     @relation("sender", fields: [senderId], references: [id])
+  senderId     String
+  receiver     User     @relation("receiver", fields: [receiverId], references: [id])
+  receiverId   String
+  createdAt    DateTime @default(now())
+  content      String
+  groupChat    GroupChat? @relation("chatMessages", fields: [groupChatId], references: [id])
+  groupChatId  String?
+}

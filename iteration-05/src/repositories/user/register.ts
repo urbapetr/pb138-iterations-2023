@@ -23,8 +23,20 @@ import type { UserRegisterResult } from './types/return';
  */
 const register = async (data: UserRegisterData): UserRegisterResult => {
   try {
-    // Write the code here, remove this comment before you do so.
-    throw new Error('[TODO]: Unimplemented - remove me and write the solution');
+    return Result.ok(
+      await prisma.$transaction(async (transaction) => {
+        const user = transaction.user.create({
+          data: {
+            userName: data.userName,
+            email: data.email,
+            hashedPassword: data.hashedPassword,
+            salt: data.salt,
+            avatar: data.avatar,
+          },
+        });
+        return user;
+      }),
+    );
   } catch (e) {
     return Result.err(e as Error);
   }

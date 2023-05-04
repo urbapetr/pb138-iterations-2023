@@ -1,4 +1,5 @@
 import { Result } from '@badrap/result';
+import type { Prisma } from '@prisma/client';
 import prisma from '../client';
 import type { UserReadAllParameters, UserReadSpecificData } from './types/data';
 import type { UserReadAllResult, UserReadSpecificResult } from './types/return';
@@ -40,8 +41,40 @@ const readSpecific = async (
   data: UserReadSpecificData,
 ): UserReadSpecificResult => {
   try {
-    // Write the code here, remove this comment before you do so.
-    throw new Error('[TODO]: Unimplemented - remove me and write the solution');
+    return Result.ok(
+      await prisma.$transaction(async (transaction) => {
+        const result = transaction.user.findFirstOrThrow({
+          where: {
+            userName: data.userName,
+          },
+          select: {
+            userName: true,
+            email: true,
+            avatar: true,
+            createdAt: true,
+            deletedAt: true,
+            posts: {
+              where: {
+                deletedAt: null,
+              },
+              select: {
+                content: true,
+                createdAt: true,
+                deletedAt: true,
+                editedAt: true,
+                id: true,
+              },
+            },
+          },
+        });
+
+        if ((await result).deletedAt != null) {
+          throw new Error('The user has been deleted!');
+        }
+
+        return result;
+      }),
+    );
   } catch (e) {
     return Result.err(e as Error);
   }
@@ -79,7 +112,27 @@ const readAll = async (
   parameters?: UserReadAllParameters,
 ): UserReadAllResult => {
   try {
-    // Write the code here, remove this comment before you do so.
+    return Result.ok(
+      await prisma.$transaction(async (transaction) => {
+        const result = transaction.user.findMany({
+          where: {
+            deletedAt: null,
+            userName: { in: parameters?.userNames } as Prisma.StringFilter,
+          },
+          select: {
+            userName: true,
+            avatar: true,
+            createdAt: true,
+          },
+          orderBy: [
+            { createdAt: parameters?.order ?? 'desc' },
+            { userName: parameters?.order ?? 'asc' },
+          ],
+        });
+
+        return result;
+      }),
+    );
   } catch (e) {
     return Result.err(e as Error);
   }

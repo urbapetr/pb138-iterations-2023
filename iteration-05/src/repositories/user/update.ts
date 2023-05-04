@@ -32,13 +32,36 @@ const update = async (data: UserUpdateData): UserUpdateResult => {
   try {
     return Result.ok(
       await prisma.$transaction(async (transaction) => {
-        /* write code here as you usually would, the transaction only
-         * encapsulates this operation - all must succeed for the operation to
-         * propagate into the database
-         *
-         * use "transaction" parameter instead of the usual "prisma"
-         * Write your code here, remove this comment before you do so. */
-        throw new Error('[TODO]: Unimplemented - remove me and write the solution');
+        const updateData: Record<string, any> = {};
+
+        if ('email' in data) {
+          updateData['email'] = data.email;
+        }
+
+        if ('userName' in data) {
+          updateData['userName'] = data.userName;
+        }
+
+        const user = await transaction.user.findUnique({
+          where: {
+            id: data.id,
+          },
+        });
+
+        if (!user) {
+          throw new Error('No User found');
+        }
+
+        if (user.deletedAt != null) {
+          throw new Error('The user has already been deleted!');
+        }
+
+        return transaction.user.update({
+          where: {
+            id: data.id,
+          },
+          data: updateData,
+        });
       }),
     );
   } catch (e) {

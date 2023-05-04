@@ -55,13 +55,60 @@ const deleteUser = async (data: UserDeleteData): UserDeleteResult => {
 
     return Result.ok(
       await prisma.$transaction(async (transaction) => {
-        /* write code here as you usually would, the transaction only
-         * encapsulates this operation - all must succeed for the operation to
-         * propagate into the database
-         *
-         * use "transaction" parameter instead of the usual "prisma"
-         * Write your code here, remove this comment before you do so. */
-        throw new Error('[TODO]: Unimplemented - remove me and write the solution');
+        const user = transaction.user.findFirstOrThrow({
+          where: { id: data.id },
+          include: { posts: true, comments: true },
+        });
+
+        if ((await user).deletedAt !== null) {
+          throw new Error('The user has already been deleted!');
+        }
+
+        const result = await transaction.user.update({
+          where: { id: data.id },
+          data: {
+            deletedAt,
+            comments: {
+              updateMany: {
+                where: {
+                  commenterId: data.id,
+                  deletedAt: null,
+                },
+                data: {
+                  deletedAt,
+                },
+              },
+            },
+            posts: {
+              updateMany: {
+                where: {
+                  creatorId: data.id,
+                  deletedAt: null,
+                },
+                data: {
+                  deletedAt,
+                  editedAt: deletedAt,
+                },
+              },
+            },
+          },
+          include: {
+            comments: {
+              where: {
+                commenterId: data.id,
+                deletedAt,
+              },
+            },
+            posts: {
+              where: {
+                creatorId: data.id,
+                deletedAt,
+              },
+            },
+          },
+        });
+
+        return result;
       }),
     );
   } catch (e) {

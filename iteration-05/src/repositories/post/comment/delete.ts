@@ -45,13 +45,42 @@ const deleteComment = async (data: CommentDeleteData): CommentDeleteResult => {
   try {
     return Result.ok(
       await prisma.$transaction(async (transaction) => {
-        /* write code here as you usually would, the transaction only
-         * encapsulates this operation - all must succeed for the operation to
-         * propagate into the database
-         *
-         * use "transaction" parameter instead of the usual "prisma"
-         * Write your code here, remove this comment before you do so. */
-        throw new Error('[TODO]: Unimplemented - remove me and write the solution');
+        const comment = await transaction.comment.findUniqueOrThrow({
+          where: {
+            id: data.id,
+          },
+          include: {
+            commenter: true,
+            post: {
+              select: {
+                id: true,
+                createdAt: true,
+                editedAt: true,
+                deletedAt: true,
+                content: true,
+              },
+            },
+          },
+        });
+
+        if (comment.commenterId !== data.commenterId) {
+          throw new Error('The specified user is not the author of the comment!');
+        }
+
+        if (comment.deletedAt != null) {
+          throw new Error('The comment has already been deleted!');
+        }
+
+        await transaction.comment.update({
+          where: {
+            id: data.id,
+          },
+          data: {
+            deletedAt: new Date(),
+          },
+        });
+
+        return comment;
       }),
     );
   } catch (e) {
