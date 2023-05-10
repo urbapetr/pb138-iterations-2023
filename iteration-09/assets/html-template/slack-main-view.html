@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="styles/normalize.css" />
+    <link rel="stylesheet" href="styles/style.css" />
+    <title>Discord iteration</title>
+  </head>
+
+  <body class="app">
+
+    <div class="header"></div>
+
+    <nav class="sidebar">
+      <div class="sidebar__header">
+        <h1>Star Wars</h1>
+      </div>
+      <ul class="sidebar__list">
+        <li class="channel">
+          <div class="channel__icon channel__icon--title">
+            <img
+              src="static-files/icons/arrow-down.svg"
+              alt="Server channel icon"
+            />
+          </div>
+          <span class="channel__name channel__name--title">Channels</span>
+        </li>
+
+        <li class="channel">
+          <div class="channel__icon">
+            <img
+              src="static-files/icons/hashtag.svg"
+              alt="Server channel icon"
+            />
+          </div>
+          <span class="channel__name">the-phantom-menace</span>
+        </li>
+
+        <li class="channel">
+          <div class="channel__icon">
+            <img
+              src="static-files/icons/hashtag.svg"
+              alt="Server channel icon"
+            />
+          </div>
+          <span class="channel__name">attack-of-the-clones</span>
+        </li>
+        <li class="channel channel--active">
+          <div class="channel__icon">
+            <img
+              src="static-files/icons/hashtag.svg"
+              alt="Server channel icon"
+            />
+          </div>
+          <span class="channel__name">revenge-of-the-sith</span>
+        </li>
+        <li class="channel">
+          <div class="channel__icon">
+            <img
+              src="static-files/icons/hashtag.svg"
+              alt="Server channel icon"
+            />
+          </div>
+          <span class="channel__name">a-new-hope</span>
+        </li>
+        <li class="channel">
+          <div class="channel__icon">
+            <img
+              src="static-files/icons/hashtag.svg"
+              alt="Server channel icon"
+              class="channel__icon"
+            />
+          </div>
+          <span class="channel__name">the-empire-strikes-back</span>
+        </li>
+        <li class="channel">
+          <div class="channel__icon">
+            <img
+              src="static-files/icons/hashtag.svg"
+              alt="Server channel icon"
+              class="channel__icon"
+            />
+          </div>
+          <span class="channel__name">return-of-the-jedi</span>
+        </li>
+        <a href="slack-channel-form.html">
+          <li class="channel">
+            <div class="channel__icon channel__icon--new">
+              <img
+                src="static-files/icons/plus.svg"
+                alt="Server channel icon"
+              />
+            </div>
+            <span class="channel__name">Add new channel</span>
+          </li>
+        </a>
+      </ul>
+    </nav>
+
+    <div class="main-view">
+      <div class="main-view__header">
+        <div class="main-view__title">
+          <img
+              src="static-files/icons/hashtag.svg"
+              alt="Server channel icon"
+          />
+          <h2>revenge-of-the-sith</h2>
+        </div>
+      </div>
+
+      <div class="main-view__content">
+        <div class="main-view__scroll">
+          <div class="message">
+            <div class="message__avatar">
+              <span>AS</span>
+            </div>
+            <div class="message__content">
+              <div class="message__header">
+                <span class="message__author">Anakin Skywalker</span>
+                <span class="message__timestamp">12:00</span>
+              </div>
+              <div class="message__text">
+                <p>Hey Obi-Wan, did you hear the latest Jedi joke?</p>
+              </div>
+            </div>
+            <div class="message__toolbar">
+              <button class="message__action">
+                <img src="static-files/icons/thumbs-up.svg" />
+              </button>
+              <button class="message__action">
+                <img src="static-files/icons/thumbs-down.svg" />
+              </button>
+              <button class="message__action">
+                <img src="static-files/icons/heart.svg" />
+              </button>
+            </div>
+          </div>
+          <div class="message">
+            <div class="message__avatar">
+              <span>OK</span>
+            </div>
+            <div class="message__content">
+              <div class="message__header">
+                <span class="message__author">Obi-Wan Kenobi</span>
+                <span class="message__timestamp">12:00</span>
+              </div>
+              <div class="message__text">
+                <p>I'm not sure I'm in the mood for jokes, Anakin.</p>
+              </div>
+            </div>
+            <div class="message__toolbar">
+              <button class="message__action">
+                <img src="static-files/icons/thumbs-up.svg" />
+              </button>
+              <button class="message__action">
+                <img src="static-files/icons/thumbs-down.svg" />
+              </button>
+              <button class="message__action">
+                <img src="static-files/icons/heart.svg" />
+              </button>
+            </div>
+          </div>
+          <div class="message">
+            <div class="message__avatar">
+              <span>AS</span>
+            </div>
+            <div class="message__content">
+              <div class="message__header">
+                <span class="message__author">Anakin Skywalker</span>
+                <span class="message__timestamp">12:00</span>
+              </div>
+              <div class="message__text">
+                <p>Come on, it's a classic. Why did the Sith cross the road?</p>
+              </div>
+              <div class="message__reactions-bar">
+                <div class="reaction">
+                  <img class="reaction__icon" src="static-files/icons/thumbs-up.svg" />
+                  <span class="reaction_counter">3</span>
+                </div>
+                <div class="reaction">
+                  <img class="reaction__icon" src="static-files/icons/heart.svg" />
+                  <span class="reaction_counter">13</span>
+                </div>
+              </div>
+            </div>
+            <div class="message__toolbar">
+              <button class="message__action">
+                <img src="static-files/icons/thumbs-up.svg" />
+              </button>
+              <button class="message__action">
+                <img src="static-files/icons/thumbs-down.svg" />
+              </button>
+              <button class="message__action">
+                <img src="static-files/icons/heart.svg" />
+              </button>
+            </div>
+          </div>
+          <div class="message">
+            <div class="message__avatar">
+              <span>OK</span>
+            </div>
+            <div class="message__content">
+              <div class="message__header">
+                <span class="message__author">Obi-Wan Kenobi</span>
+                <span class="message__timestamp">12:00</span>
+              </div>
+              <div class="message__text">
+                <p>I don't know, Anakin. Why?</p>
+              </div>
+            </div>
+            <div class="message__toolbar">
+              <button class="message__action">
+                <img src="static-files/icons/thumbs-up.svg" />
+              </button>
+              <button class="message__action">
+                <img src="static-files/icons/thumbs-down.svg" />
+              </button>
+              <button class="message__action">
+                <img src="static-files/icons/heart.svg" />
+              </button>
+            </div>
+          </div>
+          <div class="message">
+            <div class="message__avatar">
+              <span>AS</span>
+            </div>
+            <div class="message__content">
+              <div class="message__header">
+                <span class="message__author">Anakin Skywalker</span>
+                <span class="message__timestamp">12:00</span>
+              </div>
+              <div class="message__text">
+                <p>To get to the dark side!</p>
+              </div>
+            </div>
+            <div class="message__toolbar">
+              <button class="message__action">
+                <img src="static-files/icons/thumbs-up.svg" />
+              </button>
+              <button class="message__action">
+                <img src="static-files/icons/thumbs-down.svg" />
+              </button>
+              <button class="message__action">
+                <img src="static-files/icons/heart.svg" />
+              </button>
+            </div>
+          </div>
+          <div class="message">
+            <div class="message__avatar">
+              <span>OK</span>
+            </div>
+            <div class="message__content">
+              <div class="message__header">
+                <span class="message__author">Obi-Wan Kenobi</span>
+                <span class="message__timestamp">12:00</span>
+              </div>
+              <div class="message__text">
+                <p>groans That's not funny, Anakin.</p>
+              </div>
+              <div class="message__reactions-bar">
+                <div class="reaction">
+                  <img class="reaction__icon" src="static-files/icons/thumbs-down.svg" />
+                  <span class="reaction_counter">5</span>
+                </div>
+              </div>
+            </div>
+            <div class="message__toolbar">
+              <button class="message__action">
+                <img src="static-files/icons/thumbs-up.svg" />
+              </button>
+              <button class="message__action">
+                <img src="static-files/icons/thumbs-down.svg" />
+              </button>
+              <button class="message__action">
+                <img src="static-files/icons/heart.svg" />
+              </button>
+            </div>
+          </div>
+          <div class="message">
+            <div class="message__avatar">
+              <span>AS</span>
+            </div>
+            <div class="message__content">
+              <div class="message__header">
+                <span class="message__author">Anakin Skywalker</span>
+                <span class="message__timestamp">12:00</span>
+              </div>
+              <div class="message__text">
+                <p>Okay, okay. How about this one? Why did the Jedi go to the grocery store?</p>
+              </div>
+            </div>
+            <div class="message__toolbar">
+              <button class="message__action">
+                <img src="static-files/icons/thumbs-up.svg" />
+              </button>
+              <button class="message__action">
+                <img src="static-files/icons/thumbs-down.svg" />
+              </button>
+              <button class="message__action">
+                <img src="static-files/icons/heart.svg" />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="main-view__footer">
+        <div class="message-editor">
+          <textarea class="message-editor__input" placeholder="Message #Revenge of the Sith"></textarea>
+          <div class="message-editor__actions">
+            <div class="message-editor__action">
+              <img src="static-files/icons/send.svg" alt="Send icon" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </body>
+</html>
