@@ -1,4 +1,9 @@
 import type { FC } from 'react';
+import OrderSummary from './components/OrderSummary'
+import RecipientSelection from './components/RecipientSelection'
+import PaymentMethodSelection from './components/PaymentMethodSelection'
+import BillingInfoForm from './components/BillingInfoForm'
+import Confirmation from './components/Confirmation'
 
 // Use this import to load the cart content
 import cart from 'assets/cart.json';
@@ -11,11 +16,7 @@ export type AppProps = {};
 export const App: FC<AppProps> = () => {
   return (
     <div>
-      <img
-        src="https://media.tenor.com/ZFPKlHHJ-FMAAAAd/internet-wow.gif"
-        alt="Wow"
-        width={1024}
-      />
+      <OrderSummary cartItems={cart} />
     </div>
   );
 };
