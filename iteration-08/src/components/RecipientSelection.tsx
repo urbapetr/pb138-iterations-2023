@@ -1,45 +1,25 @@
 import React from 'react';
 import type { GiftRecipient } from '../types/GiftRecipient';
+import { FormWrapper } from 'FormWrapper';
 
 interface RecipientSelectionProps {
-    onRecipientSelected: (recipient: GiftRecipient) => void;
-}  
-  
-const RecipientSelection: React.FC<RecipientSelectionProps> = ({ onRecipientSelected }) => {
-    // Here you can fetch the list of recipients from an API or use a pre-defined list
-    const recipients: GiftRecipient[] = [
-        {
-        id: '1',
-        name: 'John Doe',
-        username: 'johndoe',
-        avatarUri: 'https://example.com/avatar.jpg',
-        },
-        {
-        id: '2',
-        name: 'Jane Doe',
-        username: 'janedoe',
-        avatarUri: 'https://example.com/avatar.jpg',
-        },
-    ];
+  users: GiftRecipient[]
+}
 
-    const handleRecipientSelect = (recipient: GiftRecipient) => {
-        onRecipientSelected(recipient);
-    };
+export function RecipientSelection({ users }: RecipientSelectionProps){
+  console.log(users)
+  return (
+    <FormWrapper title="Select Recipient">
+      <ul style={{ listStyle: 'none', padding: "0" }}>
+        {users?.map((item) => (
+          <li key={item.id} style={{ border: "1px solid white", padding: "1rem", borderRadius: "0.5rem", margin: "0.5rem" }}>
+            <img src={item.avatarUri} alt='avatar' style={{ maxHeight: "100%", maxWidth: "100%" }}></img>
+            {item.name} {item.username}
+          </li>
+        ))}
+      </ul>
+    </FormWrapper>
+  );
+}
 
-    return (
-        <div>
-        <h2>Select a recipient:</h2>
-        <ul>
-            {recipients.map((recipient) => (
-            <button key={recipient.id} onClick={() => handleRecipientSelect(recipient)}>
-                <img src={recipient.avatarUri} alt={recipient.name} />
-                <p>{recipient.name}</p>
-            </button>
-            ))}
-        </ul>
-        </div>
-    );
-};
-  
-    
-export default RecipientSelection
+export default RecipientSelection;
