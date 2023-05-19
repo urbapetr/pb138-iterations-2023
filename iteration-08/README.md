@@ -20,7 +20,8 @@ As a developer for a company competing with a major online game distributor, you
   - The user will receive a confirmation message (a nice animation is appreciated).
 
 - The user will be able to go back and forth between steps (at least a back button should be present in each step, for a better UX you would want to use **breadcrumbs** or a **stepper**, you are however not limited to these, as long as they make sense from a users' perspective).
-  - However, when the user choses to gift his cart. Going back must include the *Select recipient* step. Likewise, the step must be skipped when going back if the user is not gifting the cart.
+
+  - However, when the user choses to gift his cart. Going back must include the _Select recipient_ step. Likewise, the step must be skipped when going back if the user is not gifting the cart.
 
 - Use proper validation for each field, and make sure the user can't submit the form if there are any errors on the current step.
 

@@ -4,12 +4,12 @@ import { FormWrapper } from 'FormWrapper';
 import SearchBar from '../hooks/searchUser';
 
 interface RecipientSelectionProps {
-  users: GiftRecipient[]
+  users: GiftRecipient[];
 }
 
-export function RecipientSelection({ users }: RecipientSelectionProps){
-  console.log(users)
-  
+export function RecipientSelection({ users }: RecipientSelectionProps) {
+  console.log(users);
+
   return (
     <FormWrapper title="Select Recipient">
       <SearchBar />
