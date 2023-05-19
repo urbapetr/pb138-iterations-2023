@@ -57,7 +57,7 @@ export const App: FC<AppProps> = () => {
       fontFamily: "Brush Script MT",
       color: 'white',
       padding: "2rem",
-      margin: "1rem",
+      margin: "0rem",
       borderRadius: "0.5rem"
     }}>
       <form onSubmit={onSubmit}>
