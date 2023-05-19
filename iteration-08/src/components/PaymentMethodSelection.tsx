@@ -8,9 +8,10 @@ type PaymentMethodSelectionProps = {
 }
 */
 
-export function PaymentMethodSelection(){
+export function PaymentMethodSelection() {
   return (
     <FormWrapper title="Select payment method">
+      <div>TODO</div>
     </FormWrapper>
   );
 }
