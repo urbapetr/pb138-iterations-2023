@@ -20,21 +20,13 @@ import React from 'react';
 import { translatePhrase } from '../../func/utils';
 
 import { defaultFilterData, PeopleFilterData } from '../../models/people';
+import { languageAtom, peopleFilterDataAtom } from '../../state/atoms';
+import { useRecoilState, useRecoilValue } from 'recoil';
 
 export default function PeopleFilter() {
-  // <TODO>
-  /* Use shared (Recoil) value instead of constant value
-   * to get actual 'language'.
-   * Use shared (Recoil) state instead of local to get/set
-   * 'people filter data' shared value.
-   */
-  const lang = 'En';
+  const lang = useRecoilValue(languageAtom);
   const [globalFilterData, setGlobalFilterData] =
-    React.useState<PeopleFilterData>({
-      ...defaultFilterData,
-    });
-
-  // </TODO>
+    useRecoilState<PeopleFilterData>(peopleFilterDataAtom);
 
   const [localFilterData, setLocalFilterData] =
     React.useState<PeopleFilterData>({

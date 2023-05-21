@@ -17,27 +17,31 @@ import { RandomUserApiResult } from '../../models/randomuser/api';
 import { getFullName, translatePhrase } from '../../func/utils';
 
 import { defaultFilterData } from '../../models/people';
+import {
+  languageAtom,
+  peopleAtom,
+  peopleFilterDataAtom,
+} from '../../state/atoms';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { interestingPeopleSelector } from '../../state/selectors';
+import { useState } from 'react';
 
 export default function PeopleInterested() {
-  // <TODO>
-  /* Use shared (Recoil) value instead of constant value
-   * to get actual 'language'.
-   * Use people (Recoil) selector instead of an empty array
-   * to define interesting people to be processed.
-   */
-  const lang = 'En';
-  const peopleInteresting: RandomUserApiResult[] = [];
-
-  // </TODO>
+  const lang = useRecoilValue(languageAtom);
+  const people = useRecoilValue(peopleAtom);
+  const [peopleInteresting, setPeopleInteresting] = useState<
+    RandomUserApiResult[]
+  >([]);
+  const interestingPeople = useRecoilValue(interestingPeopleSelector);
+  const setPeopleFilterData = useSetRecoilState(peopleFilterDataAtom);
 
   const onShowInterestingPeople = () => {
-    // <TODO>
-    /* Use shared (Recoil) setter to update 'people filter data'
-     * value so that:
-     * 1) Filter is cleared.
-     * 2) All interesting people are shown.
-     */
-    // </TODO>
+    setPeopleFilterData(defaultFilterData);
+    const interestingPeopleArray = Array.from(interestingPeople);
+    const filteredPeople = people.filter((person) =>
+      interestingPeopleArray.includes(person.login.uuid)
+    );
+    setPeopleInteresting(filteredPeople);
   };
 
   if (peopleInteresting.length === 0) {

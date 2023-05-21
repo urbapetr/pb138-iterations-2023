@@ -21,13 +21,11 @@ import { Language, Translation } from '../../data/localization/translation';
 import { translatePhrase } from '../../func/utils';
 
 import PeopleInterested from '../PeopleInterested';
+import { useRecoilState } from 'recoil';
+import { languageAtom } from '../../state/atoms';
 
 export default function Header() {
-  // <TODO>
-  // Use shared (Recoil) state instead of local to get/set 'language'.
-  const [lang, setLang] = React.useState<Language>('En');
-
-  // </TODO>
+  const [lang, setLang] = useRecoilState(languageAtom);
 
   const [selectLanguageAnchorEl, setSelectLanguageAnchorEl] =
     React.useState<null | HTMLElement>(null);
@@ -39,10 +37,7 @@ export default function Header() {
   };
 
   const onSelectedLanguage = (lang: Language) => {
-    // <TODO>
-    // Update 'language' when requested by user.
-
-    // </TODO>
+    setLang(lang);
 
     setSelectLanguageAnchorEl(null);
   };
