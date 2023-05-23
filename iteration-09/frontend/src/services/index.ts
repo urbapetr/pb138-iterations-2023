@@ -1,0 +1,1 @@
+export * as StarWarsApi from './starWarsApi';
