@@ -6,18 +6,15 @@ import '@fontsource/roboto/700.css';
 import CssBaseline from '@mui/material/CssBaseline';
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
+import { RecoilRoot } from 'recoil';
 
 import App from './components/App';
-
-// <TODO>
-// Install and setup Recoil so it can be used together with
-// this React application.
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <CssBaseline />
-    <App />
+    <RecoilRoot>
+      <App />
+    </RecoilRoot>
   </StrictMode>
 );
-
-// </TODO>

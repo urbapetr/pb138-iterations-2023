@@ -23,42 +23,37 @@ import {
 } from '../../func/utils';
 
 import React from 'react';
-import { PeoplePreferences } from '../../models/people';
 
 import { RandomUserApiResult } from './../../models/randomuser/api';
+import { languageAtom, peoplePreferencesAtom } from '../../state/atoms';
+import { useRecoilState, useRecoilValue } from 'recoil';
 
 export interface PersonProps {
   source: RandomUserApiResult;
 }
 
 export default function Person({ source }: PersonProps) {
-  // <TODO>
-  /* Use shared (Recoil) value instead of constant value
-   * to get actual 'language'.
-   * Use shared (Recoil) state instead of local to get/set
-   * 'people preferences'.
-   */
-  const lang = 'En';
-  const [peoplePreferences, setPeoplePreferences] =
-    React.useState<PeoplePreferences>({
-      interested: new Set(),
-      notInterested: new Set(),
-    });
-
-  // </TODO>
+  const lang = useRecoilValue(languageAtom);
+  const [peoplePreferences, setPeoplePreferences] = useRecoilState(
+    peoplePreferencesAtom
+  );
 
   const handleInterested = () => {
-    // <TODO>
-    // Modify 'people preferences' so that
-    // <source.login.uuid> is added into the 'interested' Set.
-    // </TODO>
+    const updatedInterested = new Set(peoplePreferences.interested);
+    updatedInterested.add(source.login.uuid);
+    setPeoplePreferences({
+      ...peoplePreferences,
+      interested: updatedInterested,
+    });
   };
 
   const handleNotInterested = () => {
-    // <TODO>
-    // Modify 'people preferences' so that
-    // <source.login.uuid> is added into the 'notInterested' Set.
-    // </TODO>
+    const updatedNotInterested = new Set(peoplePreferences.notInterested);
+    updatedNotInterested.add(source.login.uuid);
+    setPeoplePreferences({
+      ...peoplePreferences,
+      notInterested: updatedNotInterested,
+    });
   };
 
   const isInteresting = peoplePreferences.interested.has(source.login.uuid);
